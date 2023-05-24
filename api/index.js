@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const categoryRouter=require('./routes/category')
 
 
+
 const app =express()
 app.use(express.json())
 app.use('/category', categoryRouter)
