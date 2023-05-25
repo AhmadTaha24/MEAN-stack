@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bookRouter = require('./routes/books.routes');
 const authorRouter = require('./routes/authors.routes');
-
+require('dotenv').config()
+const PORT = process.env.SERVER_PORT ||5555
+const MONGOOSE_URL = process.env.MONGOOSE_URL
 
 const multer = require('multer')
 
@@ -16,7 +18,7 @@ app.delete('/deleteAll',(req, res)=>{
     require('./models/books.models').deleteMany({}).then(res.json("done"))
 })
 
-mongoose.connect('mongodb://127.0.0.1:27017/MEAN_DB',
+mongoose.connect(MONGOOSE_URL,
 {useNewUrlParser: true, useUnifiedTopology:true},)
 .then(()=>console.log("Db connected"));
  
@@ -24,7 +26,7 @@ module.exports = mongoose;
 
 
 
-app.listen(5000,()=>{
+app.listen(PORT,()=>{
 
 })
 
