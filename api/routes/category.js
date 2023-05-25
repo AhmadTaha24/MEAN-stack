@@ -22,7 +22,7 @@ router.get('/:id',(req,res)=>{
 
 router.post('/',(req,res) => {
     categoryModel.create({ ...req.body}).then(function(postData,err){
-        if(!err) return res.status(200).json(postData)
+        if(!err) return res.status(200).json({message: "Category successfully created",postData,})
         res.status(500).json({Error:"DB_ERR"}) 
     })
 })
@@ -30,7 +30,7 @@ router.put('/:id',(req,res)=>{
     const { id }= req.params
     categoryModel.updateOne({_id:id, ...req.body}).then(function(userData, err){
         if(!err) return res.status(200).json(userData)
-        res.status(500).json({Error:"DB_ERR"})
+        res.status(500).json({message: "User not successful created",error: error.mesage,})
     })
 })
 

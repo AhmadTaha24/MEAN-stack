@@ -13,6 +13,7 @@
     "express-validator": "^7.0.1",
     "mongoose": "^7.2.0",
     "mongoose-sequence": "^5.3.1",
+    "mongoose-sequence-plugin": "^1.0.5",
     "nodemon": "^2.0.22"
   },
   "description": ""
