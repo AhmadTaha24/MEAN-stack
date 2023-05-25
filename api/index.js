@@ -1,21 +1,41 @@
+require("dotenv").config();
+const PORT = process.env.SERVER_PORT ||5555
+const MONGOOSE_URL = process.env.MONGOOSE_URL
 const express = require('express');
 const mongoose = require('mongoose');
- require("dotenv").config();
+//***routes***//
 const categoryRouter=require('./routes/category')
-
-
- const PORT = process.env.SERVER_PORT ||5555
- const MONGOOSE_URL = process.env.MONGOOSE_URL
-  
 const registerRouter =require('../api/routes/register');
 const loginRouter = require('../api/routes/login');
+const bookRouter = require('./routes/books.routes')
+const authorRouter = require('./routes/authors.routes')
 
+
+
+
+
+//******//
 const app =express()
+
 app.use(express.json())
 app.use('/category', categoryRouter)
 
 app.use('/register',registerRouter);
 app.use('/login',loginRouter);
+
+
+app.use('/books', bookRouter)
+app.use('/authors', authorRouter)
+
+//to clear all data in the books model
+//should be deleted after developing
+app.delete('/deleteAll',(req, res)=>{
+    require('./models/books.models').deleteMany({}).then(res.json("done"))
+})
+
+
+
+
 
 
 
@@ -25,13 +45,12 @@ app.use((requset,response)=>{
 });
 
 
-
-mongoose.connect( MONGOOSE_URL,
+mongoose.connect(MONGOOSE_URL,
 {useNewUrlParser: true, useUnifiedTopology:true},)
 .then(()=>console.log("Db connected")
 ).catch((err)=>(console.log(err)));
  
-    
+module.exports = mongoose;
 
 
 
