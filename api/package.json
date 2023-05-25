@@ -18,5 +18,10 @@
     "validator": "^13.9.0"
   },
   "keywords": [],
-  "description": ""
-}
+    "mongoose-sequence": "^5.3.1",
+    "mongoose-sequence-plugin": "^1.0.5",
+    "nodemon": "^2.0.22",
+    "description": ""
+  }
+ 
+

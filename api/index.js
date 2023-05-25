@@ -1,6 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
  require("dotenv").config();
+const categoryRouter=require('./routes/category')
+
 
  const PORT = process.env.SERVER_PORT ||5555
  const MONGOOSE_URL = process.env.MONGOOSE_URL
@@ -8,8 +10,9 @@ const mongoose = require('mongoose');
 const registerRouter =require('../api/routes/register');
 const loginRouter = require('../api/routes/login');
 
-const app =express();
-app.use(express.json());
+const app =express()
+app.use(express.json())
+app.use('/category', categoryRouter)
 
 app.use('/register',registerRouter);
 app.use('/login',loginRouter);
