@@ -8,11 +8,23 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb)=>{
         console.log(req.body);
-        cb(null, `books-${req.body["id"]}.${file.mimetype.split('/')[1]}`)
+        cb(null, `books-${req.body["title"]}.${file.mimetype.split('/')[1]}`)
         
     }
 })
 const upload = multer({storage: storage})
+
+//**delete image function */
+function delImg(filename) {
+    fs.unlink('images/' + filename, (err) => {
+        if (err) {
+            console.log(err);
+            return ""
+        }
+        console.log("Delete File successfully.");
+    })
+
+}
 
 
 let readAll =(req, res)=>{
@@ -27,6 +39,7 @@ let readAll =(req, res)=>{
     .limit(itemsPerPage)
     //
     .populate('authorId')
+    .populate('categoryId')
     .then((data)=>{res.json(data)})
     .catch((err)=>res.json(err))
     
@@ -37,13 +50,15 @@ let readAll =(req, res)=>{
 
 let create =(req, res)=>{
    
-    
+    const imagePath = `/images/books-${req.body.firstName}-${req.body.lastName}.png`
+
     const errorVal =validationResult(req);
         
             if(!errorVal.isEmpty()){
                 return res.json(errorVal.array())
             }
-    req.body.img = "";
+    req.body.imageUrl = imagePath;
+
     BooksModel.create(
         req.body
     )
@@ -53,7 +68,10 @@ let create =(req, res)=>{
 
 let del = (req, res)=>{
     BooksModel.findByIdAndDelete(req.params.id)
-    .then(()=> res.json("deleted succsess"))
+    .then((data) => {
+        delImg(`books-${data.title}.png`)
+        res.json(data)
+    })
     .catch((deleted)=> res.json(deleted))
 }
 
@@ -67,7 +85,7 @@ let update = (req,res) =>{
 
 let addImage = (req, res) =>{
     BooksModel.findByIdAndUpdate(req.body.id, {
-        imageUrl: `/images/authors-${req.body.id}`
+        imageUrl: `/images/books-${req.body.id}`
     })
     .then(()=>res.json(req.body))
     .catch((error)=>res.json(error))
