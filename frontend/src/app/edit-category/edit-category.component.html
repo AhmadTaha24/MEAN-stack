@@ -1,0 +1,31 @@
+
+
+
+<div *ngIf="toDisplay">
+  <div class="form-group"> 
+    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput">
+    <button type="submit" class="btn btn-info"  (click)="addEdit()" >ADD</button>
+  </div>
+</div>
+
+<table class="table" >
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let category of categories; index as i">
+      <tr>
+        <td scope="row">{{category._id}}</td>
+        
+        <td>{{category.name}}</td>
+        <td><button class="btn btn-warning"  (click)="editTodo(i)" (click)="listAll()" (click)="toggleData(i)" >edit</button></td>
+        <td><button class="btn btn-danger" (click)="deleteTodo(i)"(click)="listAll()">delete</button></td>
+      </tr>
+      
+    </tbody>
+    
+  </table>
