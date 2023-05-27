@@ -26,7 +26,7 @@ router.post('/',verifyToken,restrictTo("admin"),(req,res) => {
 })
 router.put('/:id',verifyToken,restrictTo("admin"),(req,res)=>{
     const { id }= req.params
-    categoryModel.updateOne({_id:id, ...req.body}).then(function(userData, err){
+    categoryModel.findByIdAndUpdate(id,req.body).then(function(userData, err){
         if(!err) return res.status(200).json(userData)
         res.status(500).json({message: "User not successful created",error: error.mesage,})
     })
