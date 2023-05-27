@@ -4,11 +4,8 @@ const {body, param} = require('express-validator');
 
 const router =  express.Router();
 
-
 router.get('/:page',param('page').isNumeric() , readAll)
 router.post('/', body(''), create)
-
-
 
 router.post('/test',function (req, res){
     res.json("fileName");
