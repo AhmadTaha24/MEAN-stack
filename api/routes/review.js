@@ -1,8 +1,17 @@
 const express = require("express");
-const {getAllReview,createReview} = require("../controllers/reviewController");
+const {getAllReview,createReview,avgRatting,updateReview,deleteReview,getReview} = require("../controllers/reviewController");
 const {verifyToken,restrictTo} = require("../middlewares/authController")
 const router = express.Router();
 
-router.get("/",getAllReview);
+router.get("/",verifyToken,getAllReview);
+
+router.get("/:id",verifyToken,getReview);
+
 router.post("/",verifyToken,createReview);
-module.exports =router;
+
+router.put("/:id",verifyToken,updateReview);
+
+router.delete("/:id",verifyToken,deleteReview);
+
+module.exports = router;
+

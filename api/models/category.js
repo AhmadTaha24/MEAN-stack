@@ -8,7 +8,7 @@ const categorySchema=new mongoose.Schema({
         required: [true, 'Please enter name for your category']  
         },
 
-})
+});
 // categorySchema.plugin(AutoIncrement, {inc_field: 'id'});
 
 // real table name=user, schema=userSchema

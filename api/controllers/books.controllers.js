@@ -1,6 +1,7 @@
 const BooksModel = require('../models/books.models');
 const {validationResult} = require('express-validator');
 const multer = require('multer')
+const review = require("../models/reviewModel");
 
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -32,7 +33,19 @@ let readAll =(req, res)=>{
     
 };
     
-    
+let getbookReview = async (req, res) => {
+
+    try {
+        const reviews = await review.find({ book: req.params.id });
+        
+        res.status(200).json(reviews);
+    }
+
+    catch (err) {
+        res.status(500).json(err)
+    }
+
+}
     
 
 let create =(req, res)=>{
@@ -73,4 +86,4 @@ let addImage = (req, res) =>{
     .catch((error)=>res.json(error))
 }
 
-module.exports = {del,create, readAll, upload, addImage, update}
+module.exports = {del,create, readAll, upload, addImage, update,getbookReview}
