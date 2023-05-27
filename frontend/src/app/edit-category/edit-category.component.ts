@@ -18,24 +18,23 @@ export class EditCategoryComponent {
   postId: any;
   inputValue: string = '';
   toDisplay = false;
-  // body:string="none";
+  edit_id !: any;
+
   constructor(private category: CaregoriesService, private http: HttpClient, private router: Router) { }
 
-   ngOnInit(): void {
-
-  //   this.category.getAllProducts().subscribe((res: any) => this.categories = res);
-this.listAll()
-   }
-  listAll(){
-    this.category.getAllProducts().subscribe((res: any) => this.categories = res);
+  ngOnInit(): void {
+    this.listAll()
+  }
+  listAll() {
+    this.category.getAllCategory().subscribe((res: any) => this.categories = res);
 
   }
   deleteTodo(i: number) {
     //  console.log(this.categories[i]._id);
 
-    this.http.delete('http://localhost:5000/category/' + this.categories[i]._id)
+    this.category.deleteCategory( this.categories[i]._id)
       .subscribe(() => this.status = 'Delete successful');
-
+    alert("are you sure you want to delete the item")
     this.todos.splice(i, 1);
 
   }
@@ -44,9 +43,12 @@ this.listAll()
 
 
   editTodo(i: number) {
-    const body = { name: this.addEdit() };
-    this.http.put<any>('http://localhost:5000/category/' + this.categories[i]._id, body)
-      .subscribe(data => this.postId = data.id);
+
+    // console.log(this.categories[i]);
+    this.edit_id = this.categories[i]._id
+    // console.log("inside"+this.edit_id);
+
+    this.inputValue = this.categories[i].name
 
   }
 
@@ -56,10 +58,15 @@ this.listAll()
     this.toDisplay = true;
   }
   addEdit() {
-    this.setTasks.emit(this.inputValue);
+    //  this.setTasks.emit(this.inputValue);
+    // this.inputValue=this.categories[this.edit_id].name    
     this.toDisplay = false
+    console.log("outside" + this.edit_id);
 
-    return this.inputValue
-
+    const body = { name: this.inputValue };
+    this.category.editCategory( this.edit_id, body)
+      .subscribe(data => this.postId = data.id);
+    alert("are you sure you want to Edit the item")
+    this.listAll()
   }
 }

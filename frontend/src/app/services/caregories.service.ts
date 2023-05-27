@@ -8,6 +8,19 @@ export class CaregoriesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllProducts() {
+  getAllCategory() {
     return this.http.get('http://localhost:5000/category');
-  }}
+  }
+
+  editCategory(id: string, body:Object){
+    return this.http.put<any>('http://localhost:5000/category/'+id,body);
+  }
+
+  deleteCategory(id: string) {
+    return this.http.delete('http://localhost:5000/category/' + id)
+  }
+
+
+
+}
+

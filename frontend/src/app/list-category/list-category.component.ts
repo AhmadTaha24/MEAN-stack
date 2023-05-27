@@ -13,7 +13,7 @@ export class ListCategoryComponent {
   
   ngOnInit(): void {
   
-    this.category.getAllProducts().subscribe((res: any) => this.categories = res);
+    this.category.getAllCategory().subscribe((res: any) => this.categories = res);
 
   }
   
