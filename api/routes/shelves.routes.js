@@ -1,5 +1,5 @@
 const express = require('express');
-const { readAll, create, del, update} = require('../controllers/reviews.controller');
+const { readAll, create, del, update} = require('../controllers/shelves.controller');
 const {body, param} = require('express-validator');
 
 const router =  express.Router();

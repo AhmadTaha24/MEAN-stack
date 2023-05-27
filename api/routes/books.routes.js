@@ -8,7 +8,7 @@ const router =  express.Router();
 router.get('/:page',param('page').isNumeric() , readAll)
 
 
-router.post('/', create,upload.single('img'))
+router.post('/',upload.single('image'), create)
 
 
 

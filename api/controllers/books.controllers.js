@@ -1,32 +1,48 @@
 const BooksModel = require('../models/books.models');
 const {validationResult} = require('express-validator');
 const multer = require('multer')
+const fs = require('fs');
 
+//setting up storage property
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
+        //path to save images locally
+
         cb(null, 'images')
     },
     filename: (req, file, cb)=>{
         console.log(req.body);
+
         cb(null, `books-${req.body["title"]}.${file.mimetype.split('/')[1]}`)
         
     }
 })
+//applying storage propery to multer
 const upload = multer({storage: storage})
+//******//
+
 
 //**delete image function */
 function delImg(filename) {
     fs.unlink('images/' + filename, (err) => {
         if (err) {
             console.log(err);
-            return ""
+            return "error cannot find file"+err
         }
         console.log("Delete File successfully.");
     })
 
 }
-
-
+//**renaming image */
+function renameImg(oldFileName, newFileName){
+    fs.rename('images/'+oldFileName, 'images/'+newFileName,(err) => {
+        if (err) {
+            console.log(err);
+            return "error cannot find file"+err
+        }
+        console.log("Renamed successfully.");
+    })
+}
 let readAll =(req, res)=>{
     if(!validationResult(req).isEmpty() || parseInt(req.params.page)<=0){
         return res.json(validationResult(req))
@@ -50,7 +66,7 @@ let readAll =(req, res)=>{
 
 let create =(req, res)=>{
    
-    const imagePath = `/images/books-${req.body.firstName}-${req.body.lastName}.png`
+    const imagePath = `/images/books-${req.body.title}.png`
 
     const errorVal =validationResult(req);
         
@@ -66,22 +82,44 @@ let create =(req, res)=>{
     .catch((error)=> res.json(error))};
 
 
-let del = (req, res)=>{
+let del = (req, res)=>{   
     BooksModel.findByIdAndDelete(req.params.id)
     .then((data) => {
         delImg(`books-${data.title}.png`)
         res.json(data)
     })
-    .catch((deleted)=> res.json(deleted))
+    .catch((err)=> res.json(err))
 }
 
 let update = (req,res) =>{
-     
-    BooksModel.findByIdAndUpdate(req.params.id, req.body )
+    /////start of update image
+    //**updating the  image name if firstname and lastname name going to change */
+
+     if(req.body.title){
+        req.body.imageUrl = `/images/books-${req.body.title}.png`
+        BooksModel.findByIdAndUpdate(req.params.id, req.body )
+        
+        .then((data)=>{
+            /////setting the new filename which we get from the reques and old file name that we get from data
+
+            const oldFileName = `books-${data.title}.png`;
+            const newFileName = `books-${req.body.title}.png`;
+            renameImg(oldFileName,newFileName)  ////calling the renameImg that rename image locally
+            res.json(req.body)
+        })
+        .catch((error)=>res.json(error))
+     }
+     /////end of update image
+
+     else{
+        BooksModel.findByIdAndUpdate(req.params.id, req.body )
     
-    .then(()=>res.json(req.body))
-    .catch((error)=>res.json(error))
+        .then(()=>res.json(req.body))
+        .catch((error)=>res.json(error))
+    }
+
 }
+    
 
 let addImage = (req, res) =>{
     BooksModel.findByIdAndUpdate(req.body.id, {

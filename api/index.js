@@ -9,7 +9,7 @@ const registerRouter =require('../api/routes/register');
 const loginRouter = require('../api/routes/login');
 const bookRouter = require('./routes/books.routes')
 const authorRouter = require('./routes/authors.routes')
-const reviewsRouter = require('./routes/reviews.routes')
+const shelvesRouter = require('./routes/shelves.routes')
 
 
 
@@ -27,7 +27,7 @@ app.use('/login',loginRouter);
 app.use('/books', bookRouter)
 app.use('/authors', authorRouter)
 
-app.use('/reviews',reviewsRouter)
+app.use('/shelves',shelvesRouter)
 
 //to clear all data in the books model
 //should be deleted after developing
