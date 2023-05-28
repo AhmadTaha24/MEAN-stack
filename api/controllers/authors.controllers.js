@@ -1,55 +1,53 @@
 const AuthorsModel = require('../models/authors.models');
-const { validationResult } = require('express-validator');
+const {validationResult} = require('express-validator');
 const fs = require('fs');
 
+//***getting images with multer***//
+const multer = require('multer')
+//setting up storage property
+const storage = multer.diskStorage({
+    destination: (req, file, cb)=>{
+        //path to save images locally
+        cb(null, 'images')
+    },
+    filename: (req, file, cb)=>{
+        console.log(req.body);
+        //creating image name which is (name of the model + id)
+        cb(null, `authors-${req.body.firstName}-${req.body.lastName}.${file.mimetype.split('/')[1]}`)
+        
+    }
+})
+//applying storage propery to multer
+const upload = multer({storage: storage})
+//******//
 
 //**delete image function */
 function delImg(filename) {
     fs.unlink('images/' + filename, (err) => {
         if (err) {
             console.log(err);
-            return ""
+            return "error cannot find file"+err
         }
         console.log("Delete File successfully.");
     })
 
 }
-//*** */
-
 //**renaming image */
-function renameImg(oldFileName, newFileName) {
-    fs.rename('images/' + oldFileName, 'images/' + newFileName, (err) => {
+function renameImg(oldFileName, newFileName){
+    fs.rename('images/'+oldFileName, 'images/'+newFileName,(err) => {
         if (err) {
-            console.log("couldn't rename" + err);
-            return ""
+            console.log(err);
+            return "error cannot find file"+err
         }
         console.log("Renamed successfully.");
-
+        return "done"
     })
 }
-//***getting images with multer***//
-const multer = require('multer')
-//setting up storage property
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        //path to save images locally
-        cb(null, 'images')
-    },
-    filename: (req, file, cb) => {
-        console.log(req.body);
-        cb(null, `authors-${req.body["firstName"]}-${req.body["lastName"]}.${file.mimetype.split('/')[1]}`)
-
-    }
-})
-//applying storage propery to multer
-const upload = multer({ storage: storage })
-//******//
 
 
-
-let readAll = (req, res) => {
+let readAll =(req, res)=>{
     //return erro if not number provided in the url
-    if (!validationResult(req).isEmpty()) {
+    if(!validationResult(req).isEmpty()){
         return res.json(validationResult(req))
     }
     //***pagination part ***//
@@ -57,77 +55,77 @@ let readAll = (req, res) => {
     const pageNo = req.params.page || 0;
     AuthorsModel.find({},)
 
-        .skip((pageNo - 1) * itemsPerPage)
-        .limit(itemsPerPage)
-        //******//
-        .then((data) => { res.json(data) })
-        .catch((err) => res.json(err))
-
+    .skip((pageNo-1)*itemsPerPage)
+    .limit(itemsPerPage)
+    //******//
+    .then((data)=>{res.json(data)})
+    .catch((err)=>res.json(err))
+    
 };
+    
+    
+    
 
+let create =(req, res)=>{
+    const imageExtention   = req.file.mimetype.split('/')[1];
+    const imagePath = `/images/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
 
-
-
-let create = (req, res) => {
-
-    const imagePath = `/images/authors-${req.body.firstName}-${req.body.lastName}.png`  ////**setting the path and the name of the image */
-    //checkiing error
-    const errorVal = validationResult(req);
-    if (!errorVal.isEmpty()) {
-                   return res.json(errorVal.array())
-    }
-    //** */
-
-    req.body.imageUrl = imagePath;  ////putting the image url to the request body
-
-
+    const errorVal =validationResult(req);
+    //
+           // if(!errorVal.isEmpty()){
+     //           return res.json(errorVal.array())
+            //}
+    req.body.imageUrl = imagePath;
     AuthorsModel.create(
         req.body
     )
-        .then((data) => res.json(req.body))
-        .catch((error) => res.json(error))
-};
+    .then((data)=> res.json(data))
+    .catch((error)=> res.json(error))};
 
 
-let del = (req, res) => {
-
+let del = (req, res)=>{
     AuthorsModel.findByIdAndDelete(req.params.id)
-        .then((data) => {
-            delImg(`authors-${data.firstName}-${data.lastName}.png`)    ////calling the delImg that delete image locally
-            res.json(data)
+    .then((data)=> {
+        const fileName = data.imageUrl.split('/')[2]
+        console.log(fileName);
+        delImg(fileName);
+        res.json("Delete File successfully")
         })
-        .catch((error) => res.json(error))
+    .catch((deleted)=> res.json(deleted))
 }
 
-let update = (req, res) => {
-    
-    /////start of update image
-    //**updating the  image name if firstname and lastname name going to change */
+let update = (req,res) =>{
+    if(req.body.firstName&& req.body.lastName){
+        req.body.imageUrl = `/images/authors-${req.body.firstName}-${req.body.firstName}.png`
 
-    if(req.body.firstName && req.body.lastName){
-        req.body.imageUrl = `/images/authors-${req.body.firstName}-${req.body.lastName}.png`
         AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
-        
+    
         .then((data)=>{
-            /////setting the new filename which we get from the reques and old file name that we get from data
+             /////setting the new filename which we get from the reques and old file name that we get from data
             const oldFileName = `authors-${data.firstName}-${data.lastName}.png`;
             const newFileName = `authors-${req.body.firstName}-${req.body.lastName}.png`;
             
             renameImg(oldFileName,newFileName)  ////calling the renameImg that rename image locally
+            
             res.json(req.body)
         })
         .catch((error)=>res.json(error))
     }
-    /////end of update image
     else{
-        AuthorsModel.findByIdAndUpdate(req.params.id, req.body)
-
-        .then(() => res.json("done"))
-        .catch((error) => res.json(error))
-    }
+        AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
     
-
+        .then(()=>res.json(req.body))
+        .catch((error)=>res.json(error))
+    }
+   
 }
 
+let addImage = (req, res) =>{
+    AuthorsModel.findByIdAndUpdate(req.body.id, {
+        imageUrl: `/images/authors-${req.body.id}`
+    })
+    .then(()=>res.json(req.body))
+    .catch((error)=>res.json(error))
+}
 
-module.exports = { del, create, readAll, update, upload }
+module.exports = {del,create, readAll, update, addImage, upload}

@@ -65,8 +65,10 @@ let readAll =(req, res)=>{
     
 
 let create =(req, res)=>{
-   
-    const imagePath = `/images/books-${req.body.title}.png`
+
+    const imageExtention   = req.file.mimetype.split('/')[1];
+
+    const imagePath = `/images/books-${req.body.title}.${imageExtention}`
 
     const errorVal =validationResult(req);
         
@@ -83,9 +85,12 @@ let create =(req, res)=>{
 
 
 let del = (req, res)=>{   
+    
     BooksModel.findByIdAndDelete(req.params.id)
     .then((data) => {
-        delImg(`books-${data.title}.png`)
+        const fileName = data.imageUrl.split('/')[2]
+
+        delImg(fileName)
         res.json(data)
     })
     .catch((err)=> res.json(err))
