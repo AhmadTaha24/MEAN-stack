@@ -11,8 +11,6 @@ const bookRouter = require('./routes/books.routes');
 const authorRouter = require('./routes/authors.routes');
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
-const bookRouter = require('./routes/books.routes')
-const authorRouter = require('./routes/authors.routes')
 const shelvesRouter = require('./routes/shelves.routes')
 
 
