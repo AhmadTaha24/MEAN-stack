@@ -1,5 +1,6 @@
 const AuthorsModel = require('../models/authors.models');
 const {validationResult} = require('express-validator');
+const fs = require('fs');
 
 //***getting images with multer***//
 const multer = require('multer')
@@ -12,7 +13,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb)=>{
         console.log(req.body);
         //creating image name which is (name of the model + id)
-        cb(null, `authors-${req.body["id"]}.${file.mimetype.split('/')[1]}`)
+        cb(null, `authors-${req.body.firstName}-${req.body.lastName}.${file.mimetype.split('/')[1]}`)
         
     }
 })
@@ -20,6 +21,28 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage})
 //******//
 
+//**delete image function */
+function delImg(filename) {
+    fs.unlink('images/' + filename, (err) => {
+        if (err) {
+            console.log(err);
+            return "error cannot find file"+err
+        }
+        console.log("Delete File successfully.");
+    })
+
+}
+//**renaming image */
+function renameImg(oldFileName, newFileName){
+    fs.rename('images/'+oldFileName, 'images/'+newFileName,(err) => {
+        if (err) {
+            console.log(err);
+            return "error cannot find file"+err
+        }
+        console.log("Renamed successfully.");
+        return "done"
+    })
+}
 
 
 let readAll =(req, res)=>{
@@ -44,14 +67,15 @@ let readAll =(req, res)=>{
     
 
 let create =(req, res)=>{
-   
-    
+    const imageExtention   = req.file.mimetype.split('/')[1];
+    const imagePath = `/images/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
+
     const errorVal =validationResult(req);
     //
-            if(!errorVal.isEmpty()){
+           // if(!errorVal.isEmpty()){
      //           return res.json(errorVal.array())
-            }
-    req.body.img = "";
+            //}
+    req.body.imageUrl = imagePath;
     AuthorsModel.create(
         req.body
     )
@@ -61,16 +85,39 @@ let create =(req, res)=>{
 
 let del = (req, res)=>{
     AuthorsModel.findByIdAndDelete(req.params.id)
-    .then(()=> res.json("deleted succsess"))
+    .then((data)=> {
+        const fileName = data.imageUrl.split('/')[2]
+        console.log(fileName);
+        delImg(fileName);
+        res.json("Delete File successfully")
+        })
     .catch((deleted)=> res.json(deleted))
 }
 
 let update = (req,res) =>{
-     
-    AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
+    if(req.body.firstName&& req.body.lastName){
+        req.body.imageUrl = `/images/authors-${req.body.firstName}-${req.body.firstName}.png`
+
+        AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
     
-    .then(()=>res.json(req.body))
-    .catch((error)=>res.json(error))
+        .then((data)=>{
+             /////setting the new filename which we get from the reques and old file name that we get from data
+            const oldFileName = `authors-${data.firstName}-${data.lastName}.png`;
+            const newFileName = `authors-${req.body.firstName}-${req.body.lastName}.png`;
+            
+            renameImg(oldFileName,newFileName)  ////calling the renameImg that rename image locally
+            
+            res.json(req.body)
+        })
+        .catch((error)=>res.json(error))
+    }
+    else{
+        AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
+    
+        .then(()=>res.json(req.body))
+        .catch((error)=>res.json(error))
+    }
+   
 }
 
 let addImage = (req, res) =>{

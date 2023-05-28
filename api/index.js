@@ -11,6 +11,10 @@ const bookRouter = require('./routes/books.routes');
 const authorRouter = require('./routes/authors.routes');
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
+const bookRouter = require('./routes/books.routes')
+const authorRouter = require('./routes/authors.routes')
+const shelvesRouter = require('./routes/shelves.routes')
+
 
 
 
@@ -30,11 +34,15 @@ app.use('/authors', authorRouter)
 app.use('/reviews', reviewRouter)
 app.use('/user',userRouter )
 
+app.use('/shelves',shelvesRouter)
 
 //to clear all data in the books model
 //should be deleted after developing
 app.delete('/deleteAll',(req, res)=>{
     require('./models/books.models').deleteMany({}).then(res.json("done"))
+})
+app.delete('/deleteAllauth',(req, res)=>{
+    require('./models/authors.models').deleteMany({}).then(res.json("done"))
 })
 
 
