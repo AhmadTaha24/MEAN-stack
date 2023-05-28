@@ -1,5 +1,6 @@
 
 const reviewModel = require("../models/reviewModel");
+const { validationResult } = require('express-validator');
 
 // calculate avgavgRatting
 const avgRatting = async (id) => {
@@ -49,10 +50,18 @@ exports.getReview = async (req, res, next) => {
 }
 exports.createReview = async (req, res, next) => {
     try {
+        
+        let result = validationResult(req);
+        if (!result.isEmpty()){
+            
+            let message = result.errors.reduce((current, error) => current + error.msg + " ", "");
+            return res.status(400).send(message);
+        }
+    
         const newReview = await reviewModel.create(req.body)
         res.status(200).json({
             status: "success",
-            data: { review: newReview },
+            data: { review: newReview},
         })
     } catch (err) {
         res.status(400).json(err);

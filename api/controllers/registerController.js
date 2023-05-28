@@ -1,13 +1,21 @@
 const User = require("../models/user");
+const { validationResult } = require('express-validator');
+
 const bcrypt = require('bcrypt')
 
 exports.createUser = async (req, res) => {
 
-    const { first_name, last_name, email, password ,passwordConfirm,photo,role} = req.body;
+    const { first_name, last_name, email, password, passwordConfirm, photo, role } = req.body;
 
     // validate user input 
     try {
-        if (!(first_name && last_name && email && password&&password)) {
+        let result = validationResult(req);
+        if (!result.isEmpty()) {
+           
+            let message = result.errors.reduce((current, error) => current + error.msg + " ", "");
+            return res.status(400).send(message);
+        }
+        if (!(first_name && last_name && email && password && password)) {
             return res.status(400).send("all input is required");
         }
         // check user already exist
@@ -27,11 +35,11 @@ exports.createUser = async (req, res) => {
             last_name,
             email: email.toLowerCase(),
             password: encryptedPassword,
-            passwordConfirm : encryptedPassword, 
+            passwordConfirm: encryptedPassword,
             role,
             photo,
         });
-        user.save(); 
+        user.save();
         // return new user 
         res.status(201).json(user);
 
