@@ -10,6 +10,12 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { BooksComponent } from './user/components/books/books.component';
+import { AuthoursComponent } from './user/components/authours/authours.component';
+import { FooterComponent } from './user/footer/footer.component';
+import { NavbarComponent } from './user/navbar/navbar.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +24,13 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     AddCategoryComponent,
     ListCategoryComponent,
     HomeComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    BooksComponent,
+    AuthoursComponent,
+    FooterComponent,
+    NavbarComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
