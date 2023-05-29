@@ -15,12 +15,17 @@ const authorRouter = require('./routes/authors.routes');
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 const shelvesRouter = require('./routes/shelves.routes')
+const cors = require('cors')
+
 
 
 
 
 //******//
 const app =express()
+app.use(cors())
+
+app.use('/img', express.static('images'))
 
 app.use(express.json())
 app.use('/category', categoryRouter)
