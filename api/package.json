@@ -23,6 +23,6 @@
   "mongoose-sequence": "^5.3.1",
   "mongoose-sequence-plugin": "^1.0.5",
   "nodemon": "^2.0.22",
-  "description": "",
-  "multer": "^1.4.5-lts.1"
+  "multer": "^1.4.5-lts.1",
+  "description": ""
 }

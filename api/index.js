@@ -1,8 +1,11 @@
 require("dotenv").config();
 const PORT = process.env.SERVER_PORT ||5555
 const MONGOOSE_URL = process.env.MONGOOSE_URL
+const ATLAS_URL = process.env.ATLAS_URL
+
 const express = require('express');
 const mongoose = require('mongoose');
+
 //***routes***//
 const categoryRouter=require('./routes/category')
 const registerRouter =require('../api/routes/register');
@@ -12,7 +15,7 @@ const authorRouter = require('./routes/authors.routes');
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 const shelvesRouter = require('./routes/shelves.routes')
-const ATLAS_URL=process.env.ATLAS_URL
+// const ATLAS_URL=process.env.ATLAS_URL
 
 
 

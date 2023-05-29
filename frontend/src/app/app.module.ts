@@ -11,6 +11,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
+import { BooksComponent } from './user/components/books/books.component';
+import { AuthoursComponent } from './user/components/authours/authours.component';
+import { FooterComponent } from './user/footer/footer.component';
+import { NavbarComponent } from './user/navbar/navbar.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { BookCardComponent } from './user/components/books/book-card/book-card.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +27,14 @@ import { BooksOfCategoryComponent } from './books-of-category/books-of-category.
     ListCategoryComponent,
     HomeComponent,
     EditCategoryComponent,
-    BooksOfCategoryComponent
+    BooksOfCategoryComponent,
+    BooksComponent,
+    AuthoursComponent,
+    FooterComponent,
+    NavbarComponent,
+    RegisterComponent,
+    LoginComponent,
+    BookCardComponent
   ],
   imports: [
     BrowserModule,

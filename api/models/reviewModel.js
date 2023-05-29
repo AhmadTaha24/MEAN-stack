@@ -9,7 +9,9 @@ const reviewSchema = new mongoose.Schema({
     ratting: {
         type: Number,
         min: 0,
-        max: 5
+        max: 5,
+        required: [true, 'ratting is required']
+
     },
 
     createdAt: {
