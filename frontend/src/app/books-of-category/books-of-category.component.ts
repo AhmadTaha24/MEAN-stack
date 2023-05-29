@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CategoryBookService } from '../services/category-book.service';
 import { Book } from '../interfaces/book';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-books-of-category',
@@ -9,16 +10,20 @@ import { Book } from '../interfaces/book';
 })
 export class BooksOfCategoryComponent {
   books!: Book [] 
+  id!: any
 
-constructor(private book: CategoryBookService){}
+constructor(private book: CategoryBookService, private route: ActivatedRoute,  ){}
 ngOnInit(): void {
-  this.book.getBook("3").subscribe((res: any) => console.log(res)
-  
-  
+  this.id = this.route.snapshot.paramMap.get('id') 
+
+  this.book.getBook(this.id).subscribe((res: any) => console.log(res)
+ 
   );
   // this.book.getBook("2").subscribe((res: any) => this.books=res);
-  this.book.getBook("3").subscribe((res: any) => this.books=res);
+  this.book.getBook(this.id).subscribe((res: any) => this.books=res);
+  console.log(  this.id );
 
+  
 }
 
 

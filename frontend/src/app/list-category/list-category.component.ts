@@ -17,9 +17,15 @@ export class ListCategoryComponent {
     this.category.getAllCategory().subscribe((res: any) => this.categories = res);
 
   }
-  go(){
+  // property1: string;
+
+  go(i: number){
+    console.log(i);
+    
     console.log("go");
-    this.router.navigate(['BooksOfCategory'])
+    console.log(this.categories[i]._id);
+
+    this.router.navigate(['BooksOfCategory',this.categories[i]._id])
 
   }
 }

@@ -19,7 +19,7 @@ const routes: Routes = [
   { path:"categories",
   component:ListCategoryComponent
   },
-  { path:"BooksOfCategory",
+  { path:"BooksOfCategory/:id",
   component:BooksOfCategoryComponent
   },
   { path:"AddCategory",
