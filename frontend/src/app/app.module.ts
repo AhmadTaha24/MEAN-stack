@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     AddCategoryComponent,
     ListCategoryComponent,
     HomeComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    BooksOfCategoryComponent
   ],
   imports: [
     BrowserModule,

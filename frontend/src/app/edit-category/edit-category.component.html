@@ -1,12 +1,29 @@
 
 
-
 <div *ngIf="toDisplay">
   <div class="form-group"> 
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput">
-    <button type="submit" class="btn btn-info"  (click)="addEdit()" >ADD</button>
+    <div class="row" >
+      <div class="col md-9">    <input type="text" class="form-control" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput" >
+      </div>
+      <div class="col md-3">    <button type="submit" class="btn btn-info"  (click)="addEdit()" >ADD</button>
+      </div>
+
   </div>
 </div>
+</div>
+
+<!-- <div *ngIf="toDisplay">
+  <div class="form-group"> 
+    <div class="row" >
+      <div class="col md-9">    <input type="text" class="form-control" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput" >
+      </div>
+      <div class="col md-3">    <button type="submit" class="btn btn-info"  (click)="addEdit()" >ADD</button>
+      </div>
+
+  </div>
+</div>
+</div> -->
+
 
 <table class="table" >
     <thead>

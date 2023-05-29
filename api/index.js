@@ -12,6 +12,7 @@ const authorRouter = require('./routes/authors.routes');
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 const shelvesRouter = require('./routes/shelves.routes')
+const ATLAS_URL=process.env.ATLAS_URL
 
 
 
@@ -55,7 +56,7 @@ app.use((requset,response)=>{
 });
 
 
-mongoose.connect(MONGOOSE_URL,
+mongoose.connect(ATLAS_URL,
 {useNewUrlParser: true, useUnifiedTopology:true},)
 .then(()=>console.log("Db connected")
 ).catch((err)=>(console.log(err)));
