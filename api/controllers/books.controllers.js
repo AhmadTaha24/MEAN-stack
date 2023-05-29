@@ -9,7 +9,8 @@ const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
         //path to save images locally
 
-        cb(null, 'images')
+       // cb(null, 'images')
+       cb(null, '../frontend/src/assets/img')
     },
     filename: (req, file, cb)=>{
         console.log(req.body);
@@ -147,4 +148,10 @@ let addImage = (req, res) =>{
     .catch((error)=>res.json(error))
 }
 
-module.exports = {del,create, readAll, upload, addImage, update,getbookReview}
+let booksByCategory = (req, res) =>{
+    BooksModel.find({categoryId:req.params.id})
+    .then((data)=>res.json(data))
+    .catch((err)=>res.json(err))
+}
+
+module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory}

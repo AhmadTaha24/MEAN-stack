@@ -1,5 +1,5 @@
 const express = require('express');
-const { readAll, create, del, upload, addImage, update,getbookReview } = require('../controllers/books.controllers');
+const { readAll, create, del, upload, addImage, update,getbookReview, booksByCategory } = require('../controllers/books.controllers');
 const { body, param } = require('express-validator');
 const { verifyToken, restrictTo } = require("../middlewares/authController")
 const router = express.Router();
@@ -7,6 +7,7 @@ const router = express.Router();
 
 router.get('/:page', param('page').isNumeric(), readAll)
 
+router.get('/cat/:id', booksByCategory)
 
 // getting all review that belong to book   
 router.get('/reviews/:id', getbookReview)
@@ -26,6 +27,7 @@ router.post('/test', verifyToken, restrictTo("admin"), upload.single('img'), fun
 router.delete('/:id', verifyToken, restrictTo("admin"), del)
 
 router.patch('/:id', verifyToken, restrictTo("admin"), update)
+
 
 
 router.put('/editimg', verifyToken, restrictTo("admin"), upload.single('image'), addImage)
