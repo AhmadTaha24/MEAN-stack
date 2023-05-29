@@ -8,7 +8,13 @@ const authorsSchema =new Schema(
         dateOfBirth: {type: Date},
         imageUrl:{type: String}
     },
+    {toJSON:{ virtuals: true }}
 
+)
+authorsSchema.virtual('fullName').get(
+    function(){
+        return this.firstName+'-'+this.lastName
+    }
 )
 
 const authorModel = mongoose.model("authors", authorsSchema);

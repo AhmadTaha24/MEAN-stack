@@ -11,6 +11,7 @@ router.get('/:page', param('page').isNumeric(), readAll)
 // getting all review that belong to book   
 router.get('/reviews/:id', getbookReview)
 
+router.post('/',upload.single('image'), create)
 
 router.post('/', verifyToken, restrictTo("admin"), create, upload.single('img'))
 
