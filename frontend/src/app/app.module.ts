@@ -17,6 +17,10 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BookCardComponent } from './user/components/books/book-card/book-card.component';
+import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
+// import { HomePageComponent } from './user/components/home-page/home-page.component';
+// import { AllComponent } from './user/components/homePage/all/all.component';
+// import { ReadComponent } from './user/components/homePage/read/read.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,11 @@ import { BookCardComponent } from './user/components/books/book-card/book-card.c
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    BookCardComponent
+    BookCardComponent,
+    BooksDetailsComponent,
+    // HomePageComponent,
+    // AllComponent,
+    // ReadComponent
   ],
   imports: [
     BrowserModule,
