@@ -1,0 +1,27 @@
+<div class="container">
+    <h3 class="display-4 my-5">All</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Cover</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Avg Rating</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Shalve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  *ngFor="let data of BookData">
+            <td><img [src]="data.img" alt=""></td>
+            <td>{{data.title}}</td>
+            <td>{{data}}</td>
+            <td>{{data}}</td>
+            <td>{{data}}</td>
+            <td>{{data}}</td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
