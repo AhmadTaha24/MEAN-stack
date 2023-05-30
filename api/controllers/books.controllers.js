@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb)=>{
         console.log(req.body);
 
-        cb(null, `books-${req.body["title"]}.${file.mimetype.split('/')[1]}`)
+        cb(null, `books-${req.body["title"]}.${file.mimetype.split('/')[1]}}`)
         
     }
 })
@@ -62,6 +62,35 @@ let readAll =(req, res)=>{
     .catch((err)=>res.json(err))
     
 };
+
+
+   let getBookById = async (req, res, next) => {
+
+    // const id= req.params.id
+    // res.send(id);
+        try {
+          const book = await BooksModel.findById(req.params.id).populate('categoryId').populate('authorId');
+
+          if (!book) {
+            return res.status(404).json({
+              status: "fail",
+              message: "Book not Found",
+            });
+          }
+          res.status(200).json({
+            status: "success",
+            data: {
+              book,
+            },
+          });
+        } catch (error) {
+          next(error);
+        }
+      
+}
+
+
+
     
 let getbookReview = async (req, res) => {
 
@@ -154,4 +183,4 @@ let booksByCategory = (req, res) =>{
     .catch((err)=>res.json(err))
 }
 
-module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory}
+module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory,getBookById}

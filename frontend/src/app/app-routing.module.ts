@@ -8,6 +8,7 @@ import { AuthoursComponent } from './user/components/authours/authours.component
 import { BooksComponent } from './user/components/books/books.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
 import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { CategoryBookService } from './services/category-book.service';
 
@@ -43,6 +44,10 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'book-details/:id',
+    component: BooksDetailsComponent
   },
   
   // {
