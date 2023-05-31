@@ -1,16 +1,27 @@
 export interface Book {
-    id: number,
+    _id: string,
+    categoryId:{
+        _id: string,
+        name: string,
+        __v: number
+
+    },
+    authorId:{
+        _id: string,
+        firstName: string,
+        lastName: string,
+        dateOfBirth: string,
+        imageUrl: string,
+        __v: number,
+        fullName: string,
+        id: string
+    },
     title: string,
-    description: string,
-    price: number,
-    discountPercentage ?: number,
-    rating ?: number,
-    stock: number,
-    category: string,
-    image: string,
-    createdAt: string,
-    authour:string
-
-
+    imageUrl: string,
+ 
+    __v: number
 
 }
+
+
+

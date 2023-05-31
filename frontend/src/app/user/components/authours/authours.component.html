@@ -1,1 +1,27 @@
-<p>authours works!</p>
+<section class="bg-color " style="background-color: #eee;">
+    <div class="containers">
+        <div class="title">
+            <p>The Best Authours For You</p>
+            <h2><span>Best</span> Authour</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-3" *ngFor="let authour of authours">
+    
+              <app-authour-card [authoursItem]="authour" (emitFromChild)="reciveFromChild($event)"></app-authour-card>
+              
+            
+              </div>
+          
+        </div>
+    </div>
+  
+    <div class="text-center m-5">
+      <i class="fa-solid fa-angle-left" (click)="prevPage()"></i>
+      <button class="btn bg-warning m-1 text-white" (click)="pageNumber(1)" >1</button>
+      <button class="btn btn-warning m-1 text-white " (click)="pageNumber(2)" >2</button>
+      <button class="btn btn-warning text-white m-1 " (click)="pageNumber(3)">3</button>
+    
+      <i class="fa-solid fa-angle-right" (click)="nextPage()"></i>
+    </div>
+  </section>
+  

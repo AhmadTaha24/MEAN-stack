@@ -1,5 +1,5 @@
 const express = require('express');
-const { readAll, create, del, update, upload} = require('../controllers/authors.controllers');
+const { readAll, create, del, update, upload,getauthourById} = require('../controllers/authors.controllers');
 const {body, param} = require('express-validator');
 
 const router =  express.Router();
@@ -11,6 +11,8 @@ router.post('/test',function (req, res){
     res.json("fileName");
 })
 router.delete('/:id', del)
+
+router.get('/:page/:id',getauthourById)
 
 
 router.patch('/:id', update)

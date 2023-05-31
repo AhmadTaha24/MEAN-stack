@@ -1,0 +1,23 @@
+<div class="card">
+    <div class="card-main">
+        <!-- <div class="discount">1</div> -->
+       
+        <div class="image">
+          <img class="card-img-top w-100 " [src]="authoursItem.imageUrl" alt="authour image">
+        </div>
+        <div class="cart-line"></div>
+    </div>
+    <div class="content">
+      <h5 class="card-title ">{{authoursItem.firstName | uppercase}} {{authoursItem.lastName | uppercase}}</h5>
+      <!-- <h5 class="card-title">{{authoursItem.authorId.firstName}}</h5> -->
+      <a (click)="redirectToDetails(authoursItem._id)" class="btn mr-3">More Details..</a>
+        <div class="rating">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+
+        </div>
+      
+        <!-- <p><span class="money">$81.00</span><span class="price-old">$89.00</span></p> -->
+    </div>
+</div>
