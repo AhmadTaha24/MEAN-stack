@@ -12,6 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class BooksComponent {
   Books !: Book[]
 
+  page : number =1
+
 constructor(private activatedRoute: ActivatedRoute ,private bookService:BookService ,private router:Router){}
 
 
@@ -21,7 +23,7 @@ book: any
 ngOnInit() {
 
   this.id = this.activatedRoute.snapshot.params['id'];
-  this.bookService.getBook().subscribe((res:any)=>this.Books=res)
+  this.bookService.getBook(1).subscribe((res:any)=>this.Books=res)
 
 }
 // getBooks(){
@@ -32,6 +34,41 @@ ngOnInit() {
 //   this.emitFromChild.emit(id)
 
 // }
+
+
+
+pageNumber(number:number){
+  this.page = number
+  this.bookService.getBook(number).subscribe((res:any)=>this.Books=res)
+
+}
+
+nextPage(){
+  this.page ++
+  this.bookService.getBook(this.page).subscribe((res:any)=>{
+      if((res.length==0)){
+        this.page --               
+      } else {
+        this.Books = res
+      }           
+  })
+  
+  
+}
+
+prevPage(){
+  this.page --
+  this.bookService.getBook(this.page).subscribe((res:any)=>{
+      if((this.page==0)){
+        this.page ++               
+      } else {
+        this.Books = res
+      }           
+  })
+  
+  
+}
+
 
 reciveFromChild(id: string) {
 

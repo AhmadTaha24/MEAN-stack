@@ -5,8 +5,9 @@ export interface Authour {
         lastName: string,
         dateOfBirth: string,
         imageUrl: string,
-        __v: number,
-        fullName: string,
-        id: string
+        // __v: number,
+        // fullName: string,
+        // id: string
     
+       
 }

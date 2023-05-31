@@ -63,6 +63,32 @@ let readAll =(req, res)=>{
     
 };
     
+
+let getauthourById = async (req, res, next) => {
+
+    // const id= req.params.id
+    // res.send(id);
+        try {
+          const authour = await AuthorsModel.findById(req.params.id);
+
+          if (!authour) {
+            return res.status(404).json({
+              status: "fail",
+              message: "authour not Found",
+            });
+          }
+          res.status(200).json({
+            status: "success",
+            data: {
+                authour,
+            },
+          });
+        } catch (error) {
+          next(error);
+        }
+      
+}
+
     
     
 
@@ -128,4 +154,4 @@ let addImage = (req, res) =>{
     .catch((error)=>res.json(error))
 }
 
-module.exports = {del,create, readAll, update, addImage, upload}
+module.exports = {del,create, readAll, update, addImage, upload,getauthourById}
