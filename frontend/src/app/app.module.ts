@@ -10,6 +10,17 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { BooksComponent } from './user/components/books/books.component';
+import { AuthoursComponent } from './user/components/authours/authours.component';
+import { FooterComponent } from './user/footer/footer.component';
+import { NavbarComponent } from './user/navbar/navbar.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { BookCardComponent } from './user/components/books/book-card/book-card.component';
+import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
+// import { HomePageComponent } from './user/components/home-page/home-page.component';
+// import { AllComponent } from './user/components/homePage/all/all.component';
+// import { ReadComponent } from './user/components/homePage/read/read.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +29,18 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
     AddCategoryComponent,
     ListCategoryComponent,
     HomeComponent,
-    EditCategoryComponent
+    EditCategoryComponent,
+    BooksComponent,
+    AuthoursComponent,
+    FooterComponent,
+    NavbarComponent,
+    RegisterComponent,
+    LoginComponent,
+    BookCardComponent,
+    BooksDetailsComponent,
+    // HomePageComponent,
+    // AllComponent,
+    // ReadComponent
   ],
   imports: [
     BrowserModule,

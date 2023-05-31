@@ -1,0 +1,58 @@
+<section class="container w-50 mt-5 vh-90">
+    <h1 class="text-success m-2 text-center p-3">Nice to see agian ..</h1>
+
+    <form #loinForm="ngForm" (ngSubmit)="submitLoginForm(loinForm)">
+      <div class="form-group">
+        <label for="exampleInputEmail1"><b>Email address</b></label>
+        <input type="email" 
+        class="form-control mt-2" 
+        id="exampleInputEmail1" 
+        aria-describedby="emailHelp"
+         placeholder="Enter email"
+         name="yourEmail"
+         ngModel
+         #yourEmail="ngModel"
+         required
+         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+         >
+        <div id="emailHelp" class="form-text text-muted " *ngIf="yourEmail.touched && yourEmail.invalid">
+  <span class="text-danger" *ngIf="yourEmail?.errors?.['required']">
+  Please enter your email
+  </span>
+  
+  <span class="text-danger" *ngIf="yourEmail?.errors?.['pattern']">
+      Please enter a valid email
+      </span>
+          
+        </div>
+          
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1 " class="mt-3"><b>Password</b></label>
+        <input type="password" class="form-control mt-2" id="exampleInputPassword1" placeholder="Password"
+        name="yourpassword" 
+        ngModel
+        #yourpassword="ngModel"
+        required
+  
+        >
+        <div id="emailHelp" class="form-text text-muted " *ngIf="yourpassword.touched && yourpassword.invalid">
+          <span class="text-danger" *ngIf="yourpassword?.errors?.['required']">
+          Please enter your password
+          </span>
+          </div>
+  
+        
+      </div>
+      <!-- <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div> -->
+      <button type="submit" class="btn btn-primary mt-3" [disabled]="loinForm.invalid">Submit</button>
+    </form>
+  
+  
+    <p class="mt-4">Don't have account ? <a  routerLink="../register">Register</a></p>
+  
+  
+  </section>
