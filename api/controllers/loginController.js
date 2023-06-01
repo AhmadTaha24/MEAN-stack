@@ -32,9 +32,11 @@ exports.createToken = async (req,res)=>{
             // save user token 
             user.token = token;
     
-            res.status(200).json(user)
+            res.status(200).json({
+              status:"success",
+              data:user})
         }else{
-             res.status(400).send("Invalid Credentials");
+             res.status(400).json({errormassage:"Invalid Credentials"});
         }
        
     

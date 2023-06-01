@@ -20,6 +20,7 @@ import { BookCardComponent } from './user/components/books/book-card/book-card.c
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
 import { AuthourCardComponent } from './user/components/authours/authour-card/authour-card.component';
 import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
+import { AllComponent } from './user/components/home-page/all/all.component';
 // import { AuthourComponent } from './interfaces/authour/authour.component';
 // import { HomePageComponent } from './user/components/home-page/home-page.component';
 // import { AllComponent } from './user/components/homePage/all/all.component';
@@ -45,7 +46,7 @@ import { AuthourDetailsComponent } from './user/components/authours/authour-deta
     AuthourDetailsComponent,
     // AuthourComponent,
     // HomePageComponent,
-    // AllComponent,
+     AllComponent
     // ReadComponent
   ],
   imports: [

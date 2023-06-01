@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
 import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
+import { AllComponent } from './user/components/home-page/all/all.component';
 
 const routes: Routes = [
   { path:"",
@@ -48,6 +49,10 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'user',
+    component:AllComponent
   },
   {
     path:'book-details/:id',

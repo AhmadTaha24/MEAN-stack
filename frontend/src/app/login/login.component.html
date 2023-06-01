@@ -9,18 +9,18 @@
         id="exampleInputEmail1" 
         aria-describedby="emailHelp"
          placeholder="Enter email"
-         name="yourEmail"
+         name="email"
          ngModel
-         #yourEmail="ngModel"
+         #email="ngModel"
          required
          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
          >
-        <div id="emailHelp" class="form-text text-muted " *ngIf="yourEmail.touched && yourEmail.invalid">
-  <span class="text-danger" *ngIf="yourEmail?.errors?.['required']">
+        <div id="emailHelp" class="form-text text-muted " *ngIf="email.touched && email.invalid">
+  <span class="text-danger" *ngIf="email?.errors?.['required']">
   Please enter your email
   </span>
   
-  <span class="text-danger" *ngIf="yourEmail?.errors?.['pattern']">
+  <span class="text-danger" *ngIf="email?.errors?.['pattern']">
       Please enter a valid email
       </span>
           
@@ -30,24 +30,25 @@
       <div class="form-group">
         <label for="exampleInputPassword1 " class="mt-3"><b>Password</b></label>
         <input type="password" class="form-control mt-2" id="exampleInputPassword1" placeholder="Password"
-        name="yourpassword" 
+        name="password" 
         ngModel
-        #yourpassword="ngModel"
+        #password="ngModel"
         required
   
         >
-        <div id="emailHelp" class="form-text text-muted " *ngIf="yourpassword.touched && yourpassword.invalid">
-          <span class="text-danger" *ngIf="yourpassword?.errors?.['required']">
+        <div id="emailHelp" class="form-text text-muted " *ngIf="password.touched && password.invalid">
+          <span class="text-danger" *ngIf="password?.errors?.['required']">
           Please enter your password
           </span>
           </div>
   
         
       </div>
-      <!-- <div class="form-check">
-        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        <label class="form-check-label" for="exampleCheck1">Check me out</label>
-      </div> -->
+
+      <!-- <div class="alert alert-danger">
+          
+      </div>
+     -->
       <button type="submit" class="btn btn-primary mt-3" [disabled]="loinForm.invalid">Submit</button>
     </form>
   
