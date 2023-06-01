@@ -8,6 +8,7 @@ import { AuthoursComponent } from './user/components/authours/authours.component
 import { BooksComponent } from './user/components/books/books.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import {AuthorsComponent} from './admin/authors/authors.component'
 
 const routes: Routes = [
   { path:"",
@@ -22,10 +23,7 @@ const routes: Routes = [
   { path:"editCategory",
   component:EditCategoryComponent
  },
-  {
-    path:'authors',
-    component: AuthoursComponent
-  },
+
   {
     path:'books',
     component: BooksComponent,
@@ -37,6 +35,10 @@ const routes: Routes = [
   {
     path:'login',
     component: LoginComponent
+  },
+  {
+    path:'authors',
+    component: AuthorsComponent
   },
   
   // {

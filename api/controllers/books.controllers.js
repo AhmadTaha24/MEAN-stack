@@ -3,14 +3,13 @@ const {validationResult} = require('express-validator');
 const multer = require('multer')
 const review = require("../models/reviewModel");
 const fs = require('fs');
-
 //setting up storage property
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
         //path to save images locally
 
-       // cb(null, 'images')
-       cb(null, '../frontend/src/assets/img')
+       cb(null, 'images')
+       //cb(null, '../frontend/src/assets/img')
     },
     filename: (req, file, cb)=>{
         console.log(req.body);
@@ -43,6 +42,7 @@ function renameImg(oldFileName, newFileName){
             return "error cannot find file"+err
         }
         console.log("Renamed successfully.");
+        return "done"
     })
 }
 let readAll =(req, res)=>{
@@ -79,10 +79,10 @@ let getbookReview = async (req, res) => {
     
 
 let create =(req, res)=>{
-
+    console.log(req.file);
     const imageExtention   = req.file.mimetype.split('/')[1];
 
-    const imagePath = `/images/books-${req.body.title}.${imageExtention}`
+    const imagePath = `http://localhost:5000/img/books-${req.body.title}.${imageExtention}`
 
     const errorVal =validationResult(req);
         
@@ -92,7 +92,8 @@ let create =(req, res)=>{
     req.body.imageUrl = imagePath;
 
     BooksModel.create(
-        req.body
+        req.body,
+        
     )
     .then((data)=> res.json(data))
     .catch((error)=> res.json(error))};
@@ -115,14 +116,15 @@ let update = (req,res) =>{
     //**updating the  image name if firstname and lastname name going to change */
 
      if(req.body.title){
-        req.body.imageUrl = `/images/books-${req.body.title}.png`
+        req.body.imageUrl = `http://localhost:5000/img/books-${req.body.title}.jpeg`
         BooksModel.findByIdAndUpdate(req.params.id, req.body )
         
         .then((data)=>{
             /////setting the new filename which we get from the reques and old file name that we get from data
-
-            const oldFileName = `books-${data.title}.png`;
-            const newFileName = `books-${req.body.title}.png`;
+            const oldExtension = data.imageUrl.split('.')[1]
+            console.log(oldExtension);
+            const oldFileName = `books-${data.title}.${oldExtension}`;
+            const newFileName = `books-${req.body.title}.${oldExtension}`;
             renameImg(oldFileName,newFileName)  ////calling the renameImg that rename image locally
             res.json(req.body)
         })

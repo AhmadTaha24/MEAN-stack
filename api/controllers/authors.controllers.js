@@ -63,12 +63,23 @@ let readAll =(req, res)=>{
     
 };
     
+let readAllNoPage =(req, res)=>{
+
+   
+    AuthorsModel.find({},)
+
+
+
+    .then((data)=>{res.json(data)})
+    .catch((err)=>res.json(err))
+    
+};
     
     
 
 let create =(req, res)=>{
     const imageExtention   = req.file.mimetype.split('/')[1];
-    const imagePath = `/images/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
+    const imagePath = `http://localhost:5000/img/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
 
     const errorVal =validationResult(req);
     //
@@ -96,7 +107,7 @@ let del = (req, res)=>{
 
 let update = (req,res) =>{
     if(req.body.firstName&& req.body.lastName){
-        req.body.imageUrl = `/images/authors-${req.body.firstName}-${req.body.firstName}.png`
+        req.body.imageUrl = `http://localhost:5000/img/authors-${req.body.firstName}-${req.body.lastName}.png`
 
         AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
     
@@ -128,4 +139,4 @@ let addImage = (req, res) =>{
     .catch((error)=>res.json(error))
 }
 
-module.exports = {del,create, readAll, update, addImage, upload}
+module.exports = {del,create, readAll, update, addImage, upload, readAllNoPage}

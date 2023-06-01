@@ -17,6 +17,7 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BookCardComponent } from './user/components/books/book-card/book-card.component';
+import { AuthorsComponent } from './admin/authors/authors.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { BookCardComponent } from './user/components/books/book-card/book-card.c
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    BookCardComponent
+    BookCardComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,
