@@ -15,4 +15,10 @@ export class AdminAuthorsService {
   postData(author:any){
     return this.http.post('http://localhost:5000/authors/',author)
   }
+  updateData(id:string,author:any){
+    return this.http.patch(`http://localhost:5000/authors/${id}`,author)
+  }
+  deleteData(id:string){
+    return this.http.delete(`http://localhost:5000/authors/${id}`)
+  }
 }

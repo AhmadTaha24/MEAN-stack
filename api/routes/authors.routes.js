@@ -16,7 +16,7 @@ router.post('/test',function (req, res){
 router.delete('/:id', del)
 
 
-router.patch('/:id', update)
+router.patch('/:id', upload.single('image'), update)
 
 
 module.exports = router;
