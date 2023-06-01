@@ -96,8 +96,7 @@ export class adminBooksComponent {
    //console.log(fd.getAll);
 
    this.bookService.updateData(this.updateBook._id,fd).subscribe((res)=>{
-    console.log(res);
-    console.log(this.updateBook);
+
     ///////////////updating real time
     let authorToReplace = this.books.find((x:any)=> x._id ===this.updateBook._id)
     let indexToUpdate = this.books.indexOf(authorToReplace)

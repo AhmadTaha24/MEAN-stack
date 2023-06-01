@@ -13,11 +13,19 @@ import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { BooksComponent } from './user/components/books/books.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
+import { AuthourCardComponent } from './user/components/authours/authour-card/authour-card.component';
+import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
+
 import { FooterComponent } from './user/footer/footer.component';
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BookCardComponent } from './user/components/books/book-card/book-card.component';
+import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
+
+import { AuthorsComponent } from './admin/authors/authors.component'
+import { adminBooksComponent } from './admin/books/books.component'
+
 
 @NgModule({
   declarations: [
@@ -34,7 +42,12 @@ import { BookCardComponent } from './user/components/books/book-card/book-card.c
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    BookCardComponent
+    BookCardComponent,
+    AuthorsComponent,
+    adminBooksComponent,
+    AuthourCardComponent,
+    AuthourDetailsComponent,
+    BooksDetailsComponent
   ],
   imports: [
     BrowserModule,

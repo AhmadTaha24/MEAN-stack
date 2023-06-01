@@ -2,7 +2,6 @@ require("dotenv").config();
 const PORT = process.env.SERVER_PORT ||5555
 const MONGOOSE_URL = process.env.MONGOOSE_URL
 const ATLAS_URL = process.env.ATLAS_URL
-const cors = require('cors');
 
 
 const express = require('express');
