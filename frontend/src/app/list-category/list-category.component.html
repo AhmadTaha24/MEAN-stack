@@ -1,9 +1,24 @@
 <div class="container">
     <div class="row">
-            <div *ngFor="let category of categories" class="col-md-4">
-                <div class="card" style="width: 18rem; text-align: center;">
-                <p>{{category.name}}</p>
+            <div *ngFor="let category of categories;index as i" class="col-md-4">
+                <div class="card" style="width: 18rem; border: none; text-align: center;">
+                <p><button class="btn btn-outline-primary btn-lg" (click)="go(i)">{{category.name}}</button></p>
             </div>
         </div>
     </div>
 </div>
+
+<!-- 
+<table>
+    <tbody *ngFor="let category of categories; index as i">
+        <tr>
+          <td scope="row">{{category._id}}</td>
+          
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+
+</table> -->
