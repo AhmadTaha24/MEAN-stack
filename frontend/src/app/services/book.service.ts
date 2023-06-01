@@ -19,8 +19,8 @@ export class BookService {
 
   constructor(private http:HttpClient){}
 
-  getBook(){
-    return this.http.get(`http://localhost:5000/books/1`)
+  getBook(id:number){
+    return this.http.get(`http://localhost:5000/books/${id}`)
   }
   // getBook(id:string){
   //   return this.http.get("http://localhost:5000/books/"+id)

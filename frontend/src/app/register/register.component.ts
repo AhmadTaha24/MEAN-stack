@@ -24,9 +24,10 @@ export class RegisterComponent {
 constructor(){
   this.registerForm = new FormGroup(
     {
-      yourName: new FormControl(null, Validators.required),
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, Validators.required),
       yourEmail: new FormControl(null, [Validators.required, Validators.email]),
-      userName: new FormControl(null, [Validators.required, Validators.pattern(/^\S*$/)]),
+      // userName: new FormControl(null, [Validators.required, Validators.pattern(/^\S*$/)]),
       password: new FormControl(null, [Validators.required, Validators.pattern(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^\w\s]).{8,}$/)]),
     }
   )
