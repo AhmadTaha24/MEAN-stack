@@ -18,6 +18,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BookCardComponent } from './user/components/books/book-card/book-card.component';
 import { AuthorsComponent } from './admin/authors/authors.component';
+import { adminBooksComponent } from './admin/books/books.component';
+
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { AuthorsComponent } from './admin/authors/authors.component';
     RegisterComponent,
     LoginComponent,
     BookCardComponent,
-    AuthorsComponent
+    AuthorsComponent,
+    adminBooksComponent
   ],
   imports: [
     BrowserModule,

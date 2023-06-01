@@ -6,6 +6,7 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
 import { BooksComponent } from './user/components/books/books.component';
+import { adminBooksComponent }  from './admin/books/books.component' ;
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import {AuthorsComponent} from './admin/authors/authors.component'
@@ -37,9 +38,13 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'authors',
+    path:'admin/authors',
     component: AuthorsComponent
   },
+  {
+    path:'admin/books',
+    component: adminBooksComponent
+  }
   
   // {
   //   path:'Categories',

@@ -116,7 +116,14 @@ let update = (req,res) =>{
     //**updating the  image name if firstname and lastname name going to change */
 
      if(req.body.title){
+        console.log(req.body.title);
         req.body.imageUrl = `http://localhost:5000/img/books-${req.body.title}.jpeg`
+        if(req.file){ // to update image if found
+            console.log("there is image");
+            const imageExtention   = req.file.mimetype.split('/')[1];
+            const imagePath = `http://localhost:5000/img/books-${req.body.title}.${imageExtention}`
+            req.body.imageUrl = imagePath
+        }
         BooksModel.findByIdAndUpdate(req.params.id, req.body )
         
         .then((data)=>{
@@ -155,5 +162,17 @@ let booksByCategory = (req, res) =>{
     .then((data)=>res.json(data))
     .catch((err)=>res.json(err))
 }
+let readAllNoPage =(req, res)=>{
 
-module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory}
+   
+    BooksModel.find({},)
+
+
+    .populate('authorId')
+    .populate('categoryId')
+    .then((data)=>{res.json(data)})
+    .catch((err)=>res.json(err))
+    
+};
+
+module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory, readAllNoPage}
