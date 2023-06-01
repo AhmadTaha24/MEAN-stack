@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
 import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
+import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { AllComponent } from './user/components/home-page/all/all.component';
 
 const routes: Routes = [
@@ -18,6 +19,9 @@ const routes: Routes = [
   },
   { path:"categories",
   component:ListCategoryComponent
+  },
+  { path:"BooksOfCategory/:id",
+  component:BooksOfCategoryComponent
   },
   { path:"AddCategory",
   component:AddCategoryComponent
@@ -72,7 +76,7 @@ const routes: Routes = [
 
 
   
-
+  
 ];
 
 

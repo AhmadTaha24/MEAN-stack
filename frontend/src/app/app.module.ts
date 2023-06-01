@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { BooksComponent } from './user/components/books/books.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
 import { FooterComponent } from './user/footer/footer.component';
@@ -34,6 +35,7 @@ import { AllComponent } from './user/components/home-page/all/all.component';
     ListCategoryComponent,
     HomeComponent,
     EditCategoryComponent,
+    BooksOfCategoryComponent,
     BooksComponent,
     AuthoursComponent,
     FooterComponent,
