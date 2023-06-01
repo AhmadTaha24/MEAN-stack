@@ -18,14 +18,6 @@ import { NavbarComponent } from './user/navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BookCardComponent } from './user/components/books/book-card/book-card.component';
-import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
-import { AuthourCardComponent } from './user/components/authours/authour-card/authour-card.component';
-import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
-import { AllComponent } from './user/components/home-page/all/all.component';
-// import { AuthourComponent } from './interfaces/authour/authour.component';
-// import { HomePageComponent } from './user/components/home-page/home-page.component';
-// import { AllComponent } from './user/components/homePage/all/all.component';
-// import { ReadComponent } from './user/components/homePage/read/read.component';
 
 @NgModule({
   declarations: [
@@ -42,14 +34,7 @@ import { AllComponent } from './user/components/home-page/all/all.component';
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
-    BookCardComponent,
-    BooksDetailsComponent,
-    AuthourCardComponent,
-    AuthourDetailsComponent,
-    // AuthourComponent,
-    // HomePageComponent,
-     AllComponent
-    // ReadComponent
+    BookCardComponent
   ],
   imports: [
     BrowserModule,
