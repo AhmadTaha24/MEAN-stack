@@ -11,13 +11,23 @@ export class AllComponent {
 
   @Input() BookData!:any
   @Input() AuthorData!:any
+ userName ="x";
+  constructor(private bookService:BookService,private authorData :AuthorService){
 
-  constructor(private bookService:BookService,private authorData :AuthorService){}
+    let userData =JSON.parse( localStorage.getItem("userData")!);
+//console.log(userData);
+
+this.userName = userData.first_name;
+
+
+  }
 
 
   ngOnInit(){
     this.bookService.getBooks().subscribe(res =>this.BookData = res),
-    this.authorData.getAuthor().subscribe(res =>this.AuthorData =res)
+    this.authorData.getAuthor().subscribe(res =>this.AuthorData =res),
+    console.log(this.userName);
+    
   }
 
  
