@@ -1,0 +1,37 @@
+<!-- 
+<div class="container">
+  <div class="row">
+    <div *ngFor="let book of books" class="col-md-4"> 
+      <div class="card">
+          <img [src]="book.imageUrl" class="card-img-top" style="height: 23rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{book.title | uppercase}}</h5>
+            <h5 class="card-title">{{book.authorId.firstName}}</h5>
+      </div>
+          </div>
+        </div>
+  </div>
+</div> -->
+
+<div class="container">
+    <div class="row">
+      <div *ngFor="let book of books" class="col-md-4">
+        <div class="card">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-card-front">
+                <img [src]="book.imageUrl" class="card-img-top" style="height: 22.5rem; width: 21.5rem; margin-top: 1%;">
+              </div>
+              <div class="flip-card-back">
+                <h5 class="card-title"> <button class="text-info" (click)="redirectToDetails(book._id)">{{book.title | uppercase}} </button></h5>
+                <h5 class="card-title"> <button class="text-info" (click)="redirectToDetails(book._id)">{{book.authorId.firstName| uppercase}} </button></h5>
+
+              
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

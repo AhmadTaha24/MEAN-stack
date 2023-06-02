@@ -28,7 +28,7 @@ import { adminBooksComponent } from './admin/books/books.component'
 import { AllComponent } from './user/components/home-page/all/all.component'
 import { ReadComponent } from './user/components/home-page/read/read.component'
 import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component'
-
+import { CategoryBodyComponent } from './books-of-category/category-body/category-body.component';
 
 
 @NgModule({
@@ -54,7 +54,8 @@ import { WantToReadComponent } from './user/components/home-page/want-to-read/wa
     BooksDetailsComponent,
     AllComponent,
     ReadComponent,
-    WantToReadComponent
+    WantToReadComponent,
+    CategoryBodyComponent
   ],
   imports: [
     BrowserModule,

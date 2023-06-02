@@ -5,24 +5,13 @@
     <div class="row" >
       <div class="col md-9">    <input type="text" class="form-control" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput" >
       </div>
-      <div class="col md-3">    <button type="submit" class="btn btn-info"  (click)="addEdit()" >ADD</button>
+      <div class="col md-3">    <button type="submit" class="btn btn-info"  (click)="addEdit()" >  ADD  </button>
       </div>
 
   </div>
 </div>
 </div>
 
-<!-- <div *ngIf="toDisplay">
-  <div class="form-group"> 
-    <div class="row" >
-      <div class="col md-9">    <input type="text" class="form-control" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput" >
-      </div>
-      <div class="col md-3">    <button type="submit" class="btn btn-info"  (click)="addEdit()" >ADD</button>
-      </div>
-
-  </div>
-</div>
-</div> -->
 
 
 <table class="table" >
@@ -39,10 +28,12 @@
         <td scope="row">{{category._id}}</td>
         
         <td>{{category.name}}</td>
-        <td><button class="btn btn-warning"  (click)="editTodo(i)" (click)="listAll()" (click)="toggleData(i)" >edit</button></td>
-        <td><button class="btn btn-danger" (click)="deleteTodo(i)"(click)="listAll()">delete</button></td>
+        <td><button   (click)="editTodo(i)" (click)="listAll()" (click)="toggleData(i)" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4DH0ZQe2MiB0JKxX36zeyEIEzV_sQkbI_kQ&usqp=CAU" ></button></td>
+        <td><button class="btn btn-danger" (click)="deleteTodo(i)"(click)="listAll()"> Delete </button></td>
       </tr>
       
     </tbody>
+    <button class="btn btn-primary" (click)="AddCategory()"> ADd Category </button>
+
     
   </table>
