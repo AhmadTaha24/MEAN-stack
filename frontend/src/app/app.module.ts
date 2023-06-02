@@ -24,7 +24,8 @@ import { BookCardComponent } from './user/components/books/book-card/book-card.c
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
 
 import { AuthorsComponent } from './admin/authors/authors.component'
-import { adminBooksComponent } from './admin/books/books.component'
+import { adminBooksComponent } from './admin/books/books.component';
+import { CategoryBodyComponent } from './books-of-category/category-body/category-body.component'
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { adminBooksComponent } from './admin/books/books.component'
     adminBooksComponent,
     AuthourCardComponent,
     AuthourDetailsComponent,
-    BooksDetailsComponent
+    BooksDetailsComponent,
+    CategoryBodyComponent
   ],
   imports: [
     BrowserModule,

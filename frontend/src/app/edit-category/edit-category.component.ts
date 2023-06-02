@@ -38,7 +38,10 @@ export class EditCategoryComponent {
     this.todos.splice(i, 1);
 
   }
+AddCategory(){
+  this.router.navigate(['AddCategory'])
 
+}
 
 
 
