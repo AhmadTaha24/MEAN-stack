@@ -3,6 +3,7 @@ const router = express.Router()
 const categoryModel = require('../models/category');
 const { verifyToken, restrictTo } = require("../middlewares/authController")
 
+
 router.get('/', (req, res) => {
     categoryModel.find({}).then(function (posts) {
         res.status(200).json(posts)

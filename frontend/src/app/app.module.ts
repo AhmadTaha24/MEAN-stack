@@ -29,6 +29,7 @@ import { AllComponent } from './user/components/home-page/all/all.component'
 import { ReadComponent } from './user/components/home-page/read/read.component'
 import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component'
 import { CategoryBodyComponent } from './books-of-category/category-body/category-body.component';
+import { AuthorInforComponent } from './books-of-category/author-info/author-infor.component';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { CategoryBodyComponent } from './books-of-category/category-body/categor
     AllComponent,
     ReadComponent,
     WantToReadComponent,
-    CategoryBodyComponent
+    CategoryBodyComponent,
+    AuthorInforComponent
   ],
   imports: [
     BrowserModule,

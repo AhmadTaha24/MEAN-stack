@@ -1,37 +1,47 @@
-<!-- 
-<div class="container">
-  <div class="row">
-    <div *ngFor="let book of books" class="col-md-4"> 
-      <div class="card">
-          <img [src]="book.imageUrl" class="card-img-top" style="height: 23rem;">
-          <div class="card-body">
-            <h5 class="card-title">{{book.title | uppercase}}</h5>
-            <h5 class="card-title">{{book.authorId.firstName}}</h5>
+
+<section class="bg-color " style="background-color: #eee;">
+  <div class="containers">
+      <div class="title">
+          
       </div>
-          </div>
-        </div>
-  </div>
-</div> -->
-<app-category-body></app-category-body>
+      <div class="row">
+         
+        <app-category-body></app-category-body>
 
-
-
-<!-- <div class="container">
-  <div class="row">
-    <div *ngFor="let book of books" class="col-md-4">
-      <div class="card">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img [src]="book.imageUrl" class="card-img-top" style="height: 22.5rem; width: 21.5rem; margin-top: 1%;">
-            </div>
-            <div class="flip-card-back">
-              <h5 class="card-title"> <button class="text-info" (click)="redirectToDetails(book._id)">{{book.title | uppercase}} </button></h5>
-              <h5 class="card-title">{{book.authorId.firstName}}</h5>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
   </div>
+
+  <div class="text-center m-5">
+    <i class="fa-solid fa-angle-left"(click)="prevPage()" ></i>
+    <button class="btn bg-warning m-1 text-white" (click)="pageNumber(1)" >1</button>
+    <button class="btn btn-warning m-1 text-white  " (click)="pageNumber(2)" >2</button>
+    <button class="btn btn-warning text-white m-1 " (click)="pageNumber(3)" >3</button>
+  
+    <i class="fa-solid fa-angle-right" (click)="nextPage()"></i>
+  </div>
+</section>
+
+
+
+<!-- <div class="container" style="margin-left: 35%;">
+  
+  <nav aria-label="Page navigation example">
+    <ul class="pagination pg-blue">
+      <li class="page-item disabled">
+        <span class="page-link">Previous</span>
+      </li>
+      <li class="page-item"><a class="page-link" mdbWavesEffect>1</a></li>
+      <li class="page-item active">
+        <span class="page-link" mdbWavesEffect>
+          2
+          <span class="sr-only">(current)</span>
+        </span>
+      </li>
+      <li class="page-item"><a class="page-link" mdbWavesEffect>3</a></li>
+      <li class="page-item">
+        <a class="page-link" mdbWavesEffect>Next</a>
+      </li>
+    </ul>
+  </nav>
+
 </div> -->

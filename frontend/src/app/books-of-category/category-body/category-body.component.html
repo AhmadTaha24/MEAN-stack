@@ -23,8 +23,8 @@
                 <img [src]="book.imageUrl" class="card-img-top" style="height: 22.5rem; width: 21.5rem; margin-top: 1%;">
               </div>
               <div class="flip-card-back">
-                <h5 class="card-title"> <button class="text-info" (click)="redirectToDetails(book._id)">{{book.title | uppercase}} </button></h5>
-                <!-- <h5 class="card-title"> <button class="text-info" (click)="redirectToAuthor(book.categoryId)" > Author info </button></h5> -->
+                <h5 class="card-title"> <button class="text-info" (click)="redirectToBookDetails(book._id)"> book title : {{book.title | uppercase}} </button></h5>
+                <h5 class="card-title"> <button class="text-info" (click)="redirectToDetails(book.authorId)" > Author info </button></h5>
 
               
 

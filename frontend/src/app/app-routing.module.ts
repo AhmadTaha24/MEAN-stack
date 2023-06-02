@@ -17,6 +17,7 @@ import { ReadComponent } from './user/components/home-page/read/read.component';
 import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
 
 import {AuthorsComponent} from './admin/authors/authors.component';
+import { AuthorInforComponent } from './books-of-category/author-info/author-infor.component';
 
 
 const routes: Routes = [
@@ -32,9 +33,7 @@ const routes: Routes = [
   { path:"AddCategory",
   component:AddCategoryComponent
   },
-  { path:"editCategory",
-  component:EditCategoryComponent
- },
+ 
 
   {
     path:'books',
@@ -73,6 +72,9 @@ const routes: Routes = [
     path:'book-details/:id',
     component: BooksDetailsComponent
   },
+  {path:'author-info/:id',
+  component:AuthorInforComponent
+},
   {
     path:'authour-details/:id',
     component: AuthourDetailsComponent
@@ -83,8 +85,10 @@ const routes: Routes = [
   {
     path:'admin/books',
     component: adminBooksComponent
-  }
-  
+  },
+  { path:"editCategory",
+  component:EditCategoryComponent
+ }, 
   // {
   //   path:'Categories',
   //   component: CategoriesComponent,
