@@ -41,10 +41,12 @@ exports.createUser = async (req, res) => {
         });
         user.save();
         // return new user 
-        res.status(201).json(user);
+        res.status(201).json({
+            status:"success",
+            data:user});
 
     } catch (err) {
-        res.status(400).json(err);
+        res.status(400).json({massage:err});
     }
 }
 

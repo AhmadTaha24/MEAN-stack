@@ -3,6 +3,7 @@ const PORT = process.env.SERVER_PORT ||5555
 const MONGOOSE_URL = process.env.MONGOOSE_URL
 const ATLAS_URL = process.env.ATLAS_URL
 
+
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -27,7 +28,12 @@ app.use(cors())
 
 app.use('/img', express.static('images'))
 
+app.use(cors());
+
 app.use(express.json())
+//app.use('/assets/img', express.static('../frontend/src/assets/img'))
+app.use('/img', express.static('images'))
+
 app.use('/category', categoryRouter)
 
 app.use('/register',registerRouter);

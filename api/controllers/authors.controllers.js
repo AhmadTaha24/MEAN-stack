@@ -89,12 +89,23 @@ let getauthourById = async (req, res, next) => {
       
 }
 
+let readAllNoPage =(req, res)=>{
+
+   
+    AuthorsModel.find({},)
+
+
+
+    .then((data)=>{res.json(data)})
+    .catch((err)=>res.json(err))
+    
+};
     
     
 
 let create =(req, res)=>{
     const imageExtention   = req.file.mimetype.split('/')[1];
-    const imagePath = `/images/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
+    const imagePath = `http://localhost:5000/img/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
 
     const errorVal =validationResult(req);
     //
@@ -112,7 +123,8 @@ let create =(req, res)=>{
 let del = (req, res)=>{
     AuthorsModel.findByIdAndDelete(req.params.id)
     .then((data)=> {
-        const fileName = data.imageUrl.split('/')[2]
+        const fileName = data.imageUrl.split('/')[4]
+        
         console.log(fileName);
         delImg(fileName);
         res.json("Delete File successfully")
@@ -121,15 +133,21 @@ let del = (req, res)=>{
 }
 
 let update = (req,res) =>{
+    
     if(req.body.firstName&& req.body.lastName){
-        req.body.imageUrl = `/images/authors-${req.body.firstName}-${req.body.firstName}.png`
+        req.body.imageUrl = `http://localhost:5000/img/authors-${req.body.firstName}-${req.body.lastName}.jpeg`
+        if(req.file){
+            const imageExtention   = req.file.mimetype.split('/')[1];
+            const imagePath = `http://localhost:5000/img/authors-${req.body.firstName}-${req.body.lastName}.${imageExtention}`
+            req.body.imageUrl = imagePath
+        }
 
         AuthorsModel.findByIdAndUpdate(req.params.id, req.body )
     
         .then((data)=>{
              /////setting the new filename which we get from the reques and old file name that we get from data
-            const oldFileName = `authors-${data.firstName}-${data.lastName}.png`;
-            const newFileName = `authors-${req.body.firstName}-${req.body.lastName}.png`;
+            const oldFileName = `authors-${data.firstName}-${data.lastName}.jpeg`;
+            const newFileName = `authors-${req.body.firstName}-${req.body.lastName}.jpeg`;
             
             renameImg(oldFileName,newFileName)  ////calling the renameImg that rename image locally
             
@@ -154,4 +172,4 @@ let addImage = (req, res) =>{
     .catch((error)=>res.json(error))
 }
 
-module.exports = {del,create, readAll, update, addImage, upload,getauthourById}
+module.exports = {del,create, readAll, update, addImage, upload, readAllNoPage,getauthourById}

@@ -7,6 +7,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BookService {
 
+  constructor(private http: HttpClient) { }
+
+  getBooks(){
+    return this.http.get("http://localhost:5000/books/1")
   // create new behaviour subject
   // private Book_Service= new BehaviorSubject (0);
   // BookValue=this.Book_Service.asObservable()
@@ -17,7 +21,7 @@ export class BookService {
   //   this.Book_Service.next(newVal);
   // }
 
-  constructor(private http:HttpClient){}
+  }
 
   getBook(id:number){
     return this.http.get(`http://localhost:5000/books/${id}`)

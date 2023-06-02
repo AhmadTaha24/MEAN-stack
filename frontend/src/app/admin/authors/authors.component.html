@@ -1,0 +1,87 @@
+<p>authors works!</p>
+<br>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Date Of Birth</th>
+      <th scope="col">Image</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr *ngFor="let author of authors; let i= index;">
+      <th scope="row">{{i+1}}</th>
+      <td>{{author.firstName}}</td>
+      <td>{{author.lastName}}</td>
+      <td>{{author.dateOfBirth.split('T')[0]}}</td>
+      <td><button (click)="openUpdateModal(author._id)">edit</button> <button (click)="del(i,author._id)">delete</button></td>
+      <td><img src="{{author.imageUrl}}" width="100" alt=""></td>
+
+    </tr>
+   
+  </tbody>
+
+</table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-info btn-lg" (click)="openModal()">click to add</button>
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':display}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Model Title</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandled()"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data" #authorForm="ngForm"
+          (ngSubmit)="onCreate(authorForm.value)">
+          <input type="text" name="firstName" ngModel placeholder="first name" id="">
+          <input type="text" name="lastName" ngModel placeholder="last name" id="">
+          <label for="dateOfBirth">date of birth</label>
+          <input type="date" name="dateOfBirth" ngModel id="">
+
+          <label for="img">Select image:</label>
+          <input type="file" name="image" (change)="onFileSelected($event)" ngModel>
+
+
+          <button type="submit">submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---update modal-->
+<div class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':displayUpdate}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Update Author</h4>
+        <button type="button" class="close" aria-label="Close" (click)="onCloseHandledUpdate()"><span
+            aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="modal-body">
+        <form action="" method="post" enctype="multipart/form-data" #updateAuthorForm="ngForm"
+          (ngSubmit)="onUpdate(updateAuthorForm.value)">
+          <input type="text" name="firstName" ngModel placeholder="first name" id="" value="{{updateAuthor.firstName}}">
+          <input type="text" name="lastName" ngModel placeholder="last name" id="" value="{{updateAuthor.lastName}}">
+          <label for="dateOfBirth">date of birth</label>
+          <input type="date" name="dateOfBirth" ngModel id="" value="{{updateAuthor.dateOfBirth}}">
+          <input type="file" name="image" (change)="onFileSelected($event)" ngModel>
+
+
+          <button type="submit">update</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="onCloseHandled()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

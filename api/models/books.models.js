@@ -7,6 +7,7 @@ const booksSchema = new Schema(
         authorId: { type: mongoose.Schema.Types.ObjectId, ref: "authors" },
         title: { type: String, required: true },
         imageUrl: { type: String },
+        photo: {type: String}
     }
 )
 
