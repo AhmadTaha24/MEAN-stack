@@ -8,7 +8,7 @@ export class ReviewsService {
 
   constructor(private http:HttpClient) { }
 
-  ngOnInit(){
-    return this.http.get("")
+  getData(){
+    return this.http.get("http://localhost:5000/reviews/")
   }
 }

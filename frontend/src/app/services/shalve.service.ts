@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ShalveService {
 
   constructor(private http:HttpClient) { }
-  getShalve(){
-    
+  getShelve(){
+    return this.http.get("http://localhost:5000/shelves/")
   }
 }

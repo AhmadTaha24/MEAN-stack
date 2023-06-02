@@ -12,15 +12,54 @@
         </tr>
       </thead>
       <tbody>
-        <tr  *ngFor="let data of BookData">
-            <td><img [src]="data.img" alt=""></td>
-            <td>{{data.title}}</td>
-            <td>{{data}}</td>
-            <td>{{data}}</td>
-            <td>{{data}}</td>
-            <td>{{data}}</td>
+        <!-- <tr  *ngFor="let data of BookData">
+            <td>1</td>
+            
+
+        </tr> -->
+        <tr *ngFor="let review of ReviewData; let i= index;">
+          <td><img src="{{getCover(review.book._id)}} " alt=""></td>
+          <td>{{review.book.title}}</td>
+          <td>{{getAuthor(review.book._id)}}</td>
+          <td>{{review.avg}}</td>
+          <td>{{review.ratting}}</td>
+          <td>{{getShelve(review.book._id)}}</td>
 
         </tr>
+        <tr>1</tr>
+        <tr><td>1</td></tr>
+      </tbody>
+    </table>
+    
+    <table class="table table-bordered">
+      <thead>
+        <h1>shelve</h1>
+        <tr>
+          <th scope="col">Cover</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Avg Rating</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Shalve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr  *ngFor="let data of BookData">
+            <td>1</td>
+            
+
+        </tr> -->
+        <tr *ngFor="let shelve of shelveData; let i= index;">
+          <td><img src="{{shelve.bookId.imageUrl}} " alt=""></td>
+          <td>{{shelve.bookId.title}}</td>
+          <td>{{getAuthorShelve(shelve.bookId.authorId)}}</td>
+          <td>{{getAvgRating(shelve.bookId._id)}}</td>
+          <td></td>
+          <td>{{shelve.shelve}}</td>
+
+        </tr>
+        <tr>1</tr>
+        <tr><td>1</td></tr>
       </tbody>
     </table>
   </div>

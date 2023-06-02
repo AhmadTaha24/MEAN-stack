@@ -13,7 +13,8 @@ import { BooksDetailsComponent } from './user/components/books/books-details/boo
 import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
 import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { AllComponent } from './user/components/home-page/all/all.component';
-import {AuthorsComponent} from './admin/authors/authors.component'
+import {AuthorsComponent} from './admin/authors/authors.component';
+
 
 const routes: Routes = [
   { path:"",
@@ -54,7 +55,7 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'user',
+    path:'user/all',
     component:AllComponent
   },
   {

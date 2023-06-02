@@ -25,6 +25,8 @@ import { BooksDetailsComponent } from './user/components/books/books-details/boo
 
 import { AuthorsComponent } from './admin/authors/authors.component'
 import { adminBooksComponent } from './admin/books/books.component'
+import { AllComponent } from './user/components/home-page/all/all.component'
+
 
 
 @NgModule({
@@ -47,7 +49,8 @@ import { adminBooksComponent } from './admin/books/books.component'
     adminBooksComponent,
     AuthourCardComponent,
     AuthourDetailsComponent,
-    BooksDetailsComponent
+    BooksDetailsComponent,
+    AllComponent
   ],
   imports: [
     BrowserModule,
