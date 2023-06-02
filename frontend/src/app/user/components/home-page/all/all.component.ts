@@ -13,24 +13,25 @@ import { ShalveService } from 'src/app/services/shalve.service';
 })
 export class AllComponent {
 
-  // @Input() BookData!:any
-  // @Input() AuthorData!:any
-  userId ="64733c0196b38ebbd71ef24b"
+
+  userId ="64733c0196b38ebbd71ef24b" /**this part to simulate login playload */
+
+
   arrRev:any =[];
   BookData:any =0;
   AuthorData:any =0;
   ReviewData:any = 0;
   shelveData:any = 0;
-
   constructor(private bookService:BookService,private authorData :AdminAuthorsService, private reviewData: ReviewsService, private allBooks: AdminBooksService, private allShelve: ShalveService ){}
 
-
+////////getting data from db
   ngOnInit(){
+    ////// filtering the shelve data to specific userId
     this.allShelve.getShelve().subscribe(async res=>{
       this.shelveData = await res;
-   //   console.log(res);
+
       this.shelveData = <Array<any>>this.shelveData.filter((x:any)=>{
-       // console.log(x.userId._id == this.userId);
+
         if(x.userId._id == this.userId){
           return x;
         }
@@ -38,16 +39,18 @@ export class AllComponent {
         
       })
     })
+    ////////
     this.allBooks.getData().subscribe(res =>{
       //console.log(res);
       this.BookData = res}),
     this.authorData.getData().subscribe(res =>{this.AuthorData =res})
+
+
+    ////// filtering the review data to specific userId
+
     this.reviewData.getData().subscribe(async(res:any )=>{
-     // console.log(res[1].user._id);
       this.ReviewData= await res;
-      //console.log(res);
       this.ReviewData = <Array<any>>this.ReviewData.filter((x:any)=>{
-        //console.log(x.user._id == this.userId);
         if(x.user._id == this.userId){
           return x;
         }
@@ -55,19 +58,22 @@ export class AllComponent {
         
       })
     }) 
-    //console.log(this.ReviewData);
+    ///////////
 
   }
-  getCover(id:string){
-    
+  //////get cover image
+  getCover(bookId:string){
+
   return  this.BookData.find((book:any)=>{
       
-      book._id == id
+      book._id == bookId
       return book
     }).imageUrl;
   }
+  ////////
 
   getAuthor(id: string){
+
     return this.BookData.find((book:any)=>{    
       if(book._id == id){
       //  console.log(book);
@@ -75,63 +81,91 @@ export class AllComponent {
       
     }).authorId .fullName;
   }
-  
-  getShelve(id:string){
-  //   return this.shelveData.find((shelve: any)=>{
-  //     if(shelve.userId == this.userId && shelve.bookId == id){
-  //       return shelve
-  //     }
-  //   }).shelve
-  // 
+
+    
+
+  ///////getting shelve data
+  getShelve(bookId:string){
+
   return this.shelveData.find((shelve:any)=>{
  
 
-    if(shelve.bookId._id == id){
+    if(shelve.bookId._id == bookId){
 
       return shelve
     };
     
   }).shelve
 
-
   }
+  ///////
+ 
 
+  //////get author for shelve table
   getAuthorShelve(authId: string){
-
+    console.log(this.ReviewData[0].book._id);
+    console.log(this.ReviewData.find((rev:any)=>{
+      if(rev.book._id == "647356636ca4714edb7c0fb7"){return rev}
+    }));
     return this.AuthorData.find((author:any)=>{
       if(author._id == authId){return author}
       
     }).fullName
   }
+  ///////
 
+
+  ////////get ratting for shelve table
   getRating(bookId: string){
-    
-    return this.ReviewData.find((review:any)=>{
+    console.log(this.ReviewData[0]);
+    let rating;
+    try{ /////throw error if cannot find ratting for a book
+      let result= this.ReviewData.find((rev:any)=>{
+        if(rev.book._id == bookId){return rev}
+      }).ratting
+      rating = result
+    }
+    catch(err){
 
-      if(review.book._id == bookId){
-        return review
-      }
-      else{
-        return -1
-      }
-    }).ratting
-  }
-  getAvgRating(bookId: string){
+    }
     
-    let avgg =  this.ReviewData.find((review:any)=>{
-      console.log(review.book._id == bookId);
-      if(true){return review}
-    
-    }).avg;
-
-    if(avgg){
-      return "avgg";
+    if(rating){ //////display  ratting if found
+      return rating
     }
     else{
-      return ""
+      return "not ratted"
     }
   }
+  ////////////
+
+
+
+
+
+  ///////get  average ratting for shelve table
+
+  getAvgRating(bookId: string){
+    console.log(this.ReviewData[0]);
+    let avgRating;
+    try{ /////throw error if cannot find average ratting for a book
+      let result= this.ReviewData.find((rev:any)=>{
+        if(rev.book._id == bookId){return rev}
+      }).avg
+      avgRating = result
+    }
+    catch(err){
+
+    }
+    
+    if(avgRating){ //////display average ratting if found
+      return avgRating
+    }
+    else{
+      return "not ratted"
+    }
+  /////////////
 
 
 }
 
+}

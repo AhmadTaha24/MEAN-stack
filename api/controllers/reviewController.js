@@ -6,11 +6,11 @@ const { validationResult } = require('express-validator');
 const avgRatting = async (id) => {
     const avg = await reviewModel.find({ book: id })
     let total = 0;
+
     for (rate of avg) {
         total = total + rate.ratting;
     }
     const avgratting = total / avg.length;
-
     return avgratting
 }
 
@@ -22,9 +22,12 @@ exports.getAllReview = async (req, res, next) => {
 
             let afg = await avgRatting(el.book.id)
             // append avg ratting to review data
+            var x = el;
+            x.avg = afg
+            console.log(x);
             let arr = [el, { avgRatting: afg }]
 
-            return arr
+            return x
         }))
 
         res.status(200).json(filterReviews)

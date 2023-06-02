@@ -28,6 +28,9 @@ const reviewSchema = new mongoose.Schema({
         ref: 'user',
         required: [true, "Review must belong to a user"]
 
+    },
+    avg:{
+        type:Number
     }
 })
 

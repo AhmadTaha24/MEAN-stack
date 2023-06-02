@@ -4,7 +4,7 @@ const {getAllReview,createReview,avgRatting,updateReview,deleteReview,getReview}
 const {verifyToken,restrictTo} = require("../middlewares/authController")
 const router = express.Router();
 
-router.get("/",verifyToken,getAllReview);
+router.get("/",/*verifyToken,*/getAllReview);
 
 router.get("/:id",verifyToken,getReview);
 
