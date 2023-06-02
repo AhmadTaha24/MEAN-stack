@@ -1,9 +1,10 @@
 const express = require('express');
-const { readAll, create, del, upload, addImage, update,getbookReview, booksByCategory, readAllNoPage,getBookById } = require('../controllers/books.controllers');
+const { readAll, create, del, upload, addImage, update,getbookReview, booksByCategory, readAllNoPage,getBookById, getBookByAuthorId } = require('../controllers/books.controllers');
 const { body, param } = require('express-validator');
 const { verifyToken, restrictTo } = require("../middlewares/authController")
 const router = express.Router();
 
+router.get('/:authorId', getBookByAuthorId)
 
 router.get('/:page', param('page').isNumeric(), readAll)
 

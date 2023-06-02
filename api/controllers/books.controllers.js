@@ -3,6 +3,8 @@ const {validationResult} = require('express-validator');
 const multer = require('multer')
 const review = require("../models/reviewModel");
 const fs = require('fs');
+const AuthorModel = require("../models/authors.models")
+
 //setting up storage property
 const storage = multer.diskStorage({
     destination: (req, file, cb)=>{
@@ -203,5 +205,10 @@ let readAllNoPage =(req, res)=>{
     .catch((err)=>res.json(err))
     
 };
+let getBookByAuthorId = (req, res)=>{
+    BooksModel.find({authorId:req.params.authorId},)
+    .then((data)=>{res.json(data)})
+    .catch((error)=>{res.json(error)})
+}
 
-module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory, readAllNoPage,getBookById}
+module.exports = {del,create, readAll, upload, addImage, update,getbookReview, booksByCategory, readAllNoPage,getBookById, getBookByAuthorId}
