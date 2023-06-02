@@ -13,7 +13,6 @@
     padding-bottom: 40px;
     text-align: center;
     position: relative;
-    font-family: 'Times New Roman', Times, serif;
 }
 .title::before {
     content: "";
