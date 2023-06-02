@@ -20,30 +20,22 @@ export class AddCategoryComponent {
   @Output() setTasks = new EventEmitter();
     
    add() {
-
+try{
       this.setTasks.emit(this.inputValue);
-      this.http.post<any>('http://localhost:3000/category', { name: this.inputValue}).subscribe(data => {
+      this.http.post<any>('http://localhost:5000/category', { name: this.inputValue}).subscribe(data => {
         this.postId = data.id;
         this.category.getAllCategory().subscribe((res: any) => {
           this.categories = res;
           console.log(this.categories);
         })
-        this.router.navigate(['editCategory'])
-
-        
-        
+        this.router.navigate(['editCategory'])      
     })
       this.inputValue='';
       
     }
-  
-    // redirectOnDetails(){
-      // console.log(id);
-    
-    //}
-    
+    catch{
+      alert("duplicate category")
+    }
+  }
 
-// toggleData(){
-//   this.toDisplay = true;
-// }
 }
