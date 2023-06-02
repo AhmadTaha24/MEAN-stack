@@ -13,6 +13,9 @@ import { BooksDetailsComponent } from './user/components/books/books-details/boo
 import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
 import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { AllComponent } from './user/components/home-page/all/all.component';
+import { ReadComponent } from './user/components/home-page/read/read.component';
+import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
+
 import {AuthorsComponent} from './admin/authors/authors.component';
 
 
@@ -57,6 +60,14 @@ const routes: Routes = [
   {
     path:'user/all',
     component:AllComponent
+  },
+  {
+    path:'user/read',
+    component:ReadComponent
+  },
+  {
+    path:'user/want-to-read',
+    component:WantToReadComponent
   },
   {
     path:'book-details/:id',

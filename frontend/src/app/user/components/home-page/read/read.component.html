@@ -1,1 +1,68 @@
-<p>read works!</p>
+<div class="container">
+    <h3 class="display-4 my-5">All</h3>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Cover</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Avg Rating</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Shalve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr  *ngFor="let data of BookData">
+            <td>1</td>
+            
+
+        </tr> -->
+        <!-- <tr *ngFor="let review of ReviewData; let i= index;">
+          <td><img src="{{getCover(review.book._id)}} " alt=""></td>
+          <td>{{review.book.title}}</td>
+          <td>{{getAuthor(review.book._id)}}</td>
+          <td>{{review.avg}}</td>
+          <td>{{review.ratting}}</td>
+          <td>{{getShelve(review.book._id)}}</td>
+
+        </tr> -->
+        <tr>1</tr>
+        <tr><td>1</td></tr>
+      </tbody>
+    </table>
+    
+    <table class="table table-bordered">
+      <thead>
+        <h1>shelve</h1>
+        <tr>
+          <th scope="col">Cover</th>
+          <th scope="col">Name</th>
+          <th scope="col">Author</th>
+          <th scope="col">Avg Rating</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Shalve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr  *ngFor="let data of BookData">
+            <td>1</td>
+            
+
+        </tr> -->
+        <tr *ngFor="let shelve of shelveData; let i= index;">
+          <td><img src="{{shelve.bookId.imageUrl}} " alt=""></td>
+          <td>{{shelve.bookId.title}}</td>
+          <td>{{getAuthorShelve(shelve.bookId.authorId)}}</td>
+          <!-- <td>{{getAvgRating(shelve.bookId._id)}}</td> -->
+          <td>{{(shelve.bookId._id)}}result={{getAvgRating(shelve.bookId._id)}}</td>
+
+          <td>{{(shelve.bookId._id)}}result={{getRating(shelve.bookId._id)}}</td>
+          <td>{{shelve.shelve}}</td>
+
+        </tr>
+        <tr>1</tr>
+        <tr><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  

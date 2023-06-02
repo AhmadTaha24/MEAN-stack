@@ -14,7 +14,7 @@ const storage = multer.diskStorage({
     filename: (req, file, cb)=>{
         console.log(req.body);
 
-        cb(null, `books-${req.body["title"]}.${file.mimetype.split('/')[1]}}`)
+        cb(null, `books-${req.body["title"]}.${file.mimetype.split('/')[1]}`)
         
     }
 })

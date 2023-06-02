@@ -26,6 +26,8 @@ import { BooksDetailsComponent } from './user/components/books/books-details/boo
 import { AuthorsComponent } from './admin/authors/authors.component'
 import { adminBooksComponent } from './admin/books/books.component'
 import { AllComponent } from './user/components/home-page/all/all.component'
+import { ReadComponent } from './user/components/home-page/read/read.component'
+import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component'
 
 
 
@@ -50,7 +52,9 @@ import { AllComponent } from './user/components/home-page/all/all.component'
     AuthourCardComponent,
     AuthourDetailsComponent,
     BooksDetailsComponent,
-    AllComponent
+    AllComponent,
+    ReadComponent,
+    WantToReadComponent
   ],
   imports: [
     BrowserModule,
