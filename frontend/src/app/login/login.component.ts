@@ -26,9 +26,9 @@ export class LoginComponent {
   submitLoginForm(loginForm:any){
 
     return this._AuthService.login(loginForm.value).subscribe((data)=>{
-     //  console.log(data);
-      this._AuthService.saveUserData(data.data.first_name,data.data.last_name,data.data.email,data.data.token,data.data.role)
-      this._Router.navigate(['/user'])
+     // console.log(data);
+      this._AuthService.saveUserData(data.data.first_name,data.data.last_name,data.data.email,data.data.token,data.data.role,data.data._id)
+      this._Router.navigate(['/user/all'])
     })
   }
 

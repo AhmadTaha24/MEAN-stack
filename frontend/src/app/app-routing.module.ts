@@ -6,11 +6,18 @@ import { AddCategoryComponent } from './add-category/add-category.component';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
 import { BooksComponent } from './user/components/books/books.component';
+import { adminBooksComponent }  from './admin/books/books.component' ;
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
 import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
+import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { AllComponent } from './user/components/home-page/all/all.component';
+import { ReadComponent } from './user/components/home-page/read/read.component';
+import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
+
+import {AuthorsComponent} from './admin/authors/authors.component';
+
 
 const routes: Routes = [
   { path:"",
@@ -19,16 +26,16 @@ const routes: Routes = [
   { path:"categories",
   component:ListCategoryComponent
   },
+  { path:"BooksOfCategory/:id",
+  component:BooksOfCategoryComponent
+  },
   { path:"AddCategory",
   component:AddCategoryComponent
   },
   { path:"editCategory",
   component:EditCategoryComponent
  },
-  {
-    path:'authors',
-    component: AuthoursComponent
-  },
+
   {
     path:'books',
     component: BooksComponent,
@@ -51,8 +58,16 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path:'user',
+    path:'user/all',
     component:AllComponent
+  },
+  {
+    path:'user/read',
+    component:ReadComponent
+  },
+  {
+    path:'user/want-to-read',
+    component:WantToReadComponent
   },
   {
     path:'book-details/:id',
@@ -62,6 +77,13 @@ const routes: Routes = [
     path:'authour-details/:id',
     component: AuthourDetailsComponent
   },
+  {path:'admin/authors',
+    component: AuthorsComponent
+  },
+  {
+    path:'admin/books',
+    component: adminBooksComponent
+  }
   
   // {
   //   path:'Categories',
@@ -72,7 +94,7 @@ const routes: Routes = [
 
 
   
-
+  
 ];
 
 

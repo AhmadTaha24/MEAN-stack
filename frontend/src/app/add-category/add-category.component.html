@@ -7,10 +7,17 @@
       
       <div class="form-group"> 
         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter New Caterory" [(ngModel)]="inputValue" name="todoInput">
-        <button type="submit" class="btn btn-info"  (click)="add()" (click)="redirectOnDetails()">ADD</button>
+        <button type="submit" class="btn btn-info"  (click)="add()"  >ADD</button>
       </div>
-    
-    
+
+      <!-- <div ng-init="categories"></div>
+      <tr ng-repeat="friend in friends | filter:searchText">
+        <p ng-repeat="category in categories | filter:inputValue"> the chategory has already exsist</p>
+        <p> {{category.name}}</p> -->
+      <!-- <div *ngIf="toDisplay">
+        <p> the chategory has already exsist</p>
+      </div>
+     -->
       
     </form>
     </div>

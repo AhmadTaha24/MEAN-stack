@@ -10,21 +10,26 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { BooksComponent } from './user/components/books/books.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
+import { AuthourCardComponent } from './user/components/authours/authour-card/authour-card.component';
+import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
+
 import { FooterComponent } from './user/footer/footer.component';
 import { NavbarComponent } from './user/navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BookCardComponent } from './user/components/books/book-card/book-card.component';
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
-import { AuthourCardComponent } from './user/components/authours/authour-card/authour-card.component';
-import { AuthourDetailsComponent } from './user/components/authours/authour-details/authour-details.component';
-import { AllComponent } from './user/components/home-page/all/all.component';
-// import { AuthourComponent } from './interfaces/authour/authour.component';
-// import { HomePageComponent } from './user/components/home-page/home-page.component';
-// import { AllComponent } from './user/components/homePage/all/all.component';
-// import { ReadComponent } from './user/components/homePage/read/read.component';
+
+import { AuthorsComponent } from './admin/authors/authors.component'
+import { adminBooksComponent } from './admin/books/books.component'
+import { AllComponent } from './user/components/home-page/all/all.component'
+import { ReadComponent } from './user/components/home-page/read/read.component'
+import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component'
+
+
 
 @NgModule({
   declarations: [
@@ -34,6 +39,7 @@ import { AllComponent } from './user/components/home-page/all/all.component';
     ListCategoryComponent,
     HomeComponent,
     EditCategoryComponent,
+    BooksOfCategoryComponent,
     BooksComponent,
     AuthoursComponent,
     FooterComponent,
@@ -41,13 +47,14 @@ import { AllComponent } from './user/components/home-page/all/all.component';
     RegisterComponent,
     LoginComponent,
     BookCardComponent,
-    BooksDetailsComponent,
+    AuthorsComponent,
+    adminBooksComponent,
     AuthourCardComponent,
     AuthourDetailsComponent,
-    // AuthourComponent,
-    // HomePageComponent,
-     AllComponent
-    // ReadComponent
+    BooksDetailsComponent,
+    AllComponent,
+    ReadComponent,
+    WantToReadComponent
   ],
   imports: [
     BrowserModule,
