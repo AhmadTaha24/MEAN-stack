@@ -1,5 +1,5 @@
 <section class="container w-50 mt-5 vh-90">
-    <h1 class="text-success m-2 text-center p-3">Nice to see agian ..</h1>
+    <h1 class="text-info m-2 text-center p-3">Nice to see You agian ..</h1>
 
     <form #loinForm="ngForm" (ngSubmit)="submitLoginForm(loinForm)">
       <div class="form-group">
@@ -13,7 +13,7 @@
          ngModel
          #email="ngModel"
          required
-         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+         pattern=""
          >
         <div id="emailHelp" class="form-text text-muted " *ngIf="email.touched && email.invalid">
   <span class="text-danger" *ngIf="email?.errors?.['required']">

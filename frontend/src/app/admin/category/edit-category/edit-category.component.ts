@@ -1,8 +1,10 @@
 import { Component, EventEmitter, Input, NgModule, Output } from '@angular/core';
-import { Categories } from '../interfaces/categories';
-import { CaregoriesService } from '../services/caregories.service';
+//import { Categories } from '../../../interfaces/categories';
+//import { CaregoriesService } from '../../../services/caregories.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { Categories } from 'src/app/interfaces/categories';
+import { CaregoriesService } from 'src/app/services/caregories.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -32,7 +34,7 @@ export class EditCategoryComponent {
   deleteTodo(i: number) {
     //  console.log(this.categories[i]._id);
 
-    this.category.deleteCategory( this.categories[i]._id)
+    this.category.deleteCategory(this.categories[i]._id)
       .subscribe(() => this.status = 'Delete successful');
     alert("are you sure you want to delete the item")
     this.todos.splice(i, 1);
@@ -67,7 +69,7 @@ AddCategory(){
     console.log("outside" + this.edit_id);
 
     const body = { name: this.inputValue };
-    this.category.editCategory( this.edit_id, body)
+    this.category.editCategory(this.edit_id, body)
       .subscribe(data => this.postId = data.id);
     alert("are you sure you want to Edit the item")
     this.listAll()

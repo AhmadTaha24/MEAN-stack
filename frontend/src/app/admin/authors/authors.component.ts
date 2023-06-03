@@ -82,8 +82,8 @@ export class AuthorsComponent {
     
     fd.append('firstName', author.firstName)
     fd.append('lastName', author.lastName)
-    fd.append('dateOfBirth', <any>author.dateOfBirth)
-    fd.append('image', this.selectedFile, "it works")
+    fd.append('dateOfBirth', <any>author.dateOfBirth);
+    (this.selectedFile)?fd.append('image', this.selectedFile, "it works"):"";
 
     console.log(author);
   

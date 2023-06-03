@@ -24,6 +24,8 @@ export class LoginComponent {
   }
 
   submitLoginForm(loginForm:any){
+console.log(loginForm.value);
+console.log("///////////////////////////");
 
     return this._AuthService.login(loginForm.value).subscribe((data)=>{
      // console.log(data);

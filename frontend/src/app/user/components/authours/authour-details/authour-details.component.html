@@ -1,28 +1,30 @@
-<div class="d-flex justify-content-around w-75 "  style="background-color: #eee;">
-    <div class="imgae_card">
-      <!-- <img class="card-img-top w-100 h-50  " [src]="authour.imageUrl" alt="Card image cap"> -->
-      <img class="card-img-top w-100 " [src]="authour.imageUrl" alt="authour image">
-    
-    
-    
-    </div>
-    
-    <div class="content">
-       <h2 class="card-title m-2">{{authour.firstName | uppercase}} {{authour.lastName | uppercase}}</h2> 
-          <h4 class="card-title m-2">Born in : {{authour.dateOfBirth | date }}</h4>
-          <!-- <h4 class="card-title m-2"> Catergory : {{authour.categoryId.name}}</h4> --> 
-    </div>
+<div class="d-flex justify-content-around w-75 " style="background-color: #eee;">
+  <div class="imgae_card">
+    <!-- <img class="card-img-top w-100 h-50  " [src]="authour.imageUrl" alt="Card image cap"> -->
+    <img class="card-img-top w-100 " [src]="authour.imageUrl" alt="authour image">
+
+
+
   </div>
-  
-  
-  
-  
-  <div class="review">
+
+  <div class="content">
+    <h2 class="card-title m-2  mt-5">{{authour.firstName | uppercase}} {{authour.lastName | uppercase}}</h2>
+    <h4 class="card-title m-2"><span>Born in </span> : {{authour.dateOfBirth | date }}</h4>
+    <!-- <h4 class="card-title m-2"> Catergory : {{authour.categoryId.name}}</h4> -->
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+
+
+<!-- <div class="review">
     <div class="container">
       <div class="book">
         <div class="d-flex justify-content-around w-75 "  style="background-color: #eee;">
           <div class="imgae_card">
-            <img class="card-img-top w-100 h-50  " [src]="book.imageUrl" alt="Card image cap">
+            <img class="card-img-top " [src]="book.imageUrl" alt="Card image cap">
           
           
           
@@ -31,7 +33,7 @@
           <div class="content">
             <h2 class="card-title m-2">{{book.title | uppercase}}</h2>
                 <h4 class="card-title m-2">by : {{book.authorId.fullName}}</h4>
-                <h4 class="card-title m-2"> Catergory : {{book.categoryId.name}}</h4>
+               
           </div>
         </div>
 
@@ -39,4 +41,4 @@
     </div>
   
   
-  </div>
+  </div> -->

@@ -4,11 +4,14 @@ const { body, param } = require('express-validator');
 const { verifyToken, restrictTo } = require("../middlewares/authController")
 const router = express.Router();
 
+router.get('/', readAllNoPage)
+router.get('/:page', readAll)
+
 router.get('/:authorId', getBookByAuthorId)
 
-router.get('/:page', param('page').isNumeric(), readAll)
 
-router.get('/', readAllNoPage)
+
+
 
 router.get('/cat/:id', booksByCategory)
 router.get('/:page/:id',getBookById)
