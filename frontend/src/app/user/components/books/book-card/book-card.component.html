@@ -22,7 +22,7 @@
                   </div>
                   <div class="content">
                     <h5 class="card-title">{{bookitem.title | uppercase}}</h5>
-                    <h5 class="card-title">{{bookitem.authorId.firstName}}</h5>
+                    <h5 class="card-title"> <b>Authour :</b> {{bookitem.authorId.firstName}}</h5>
                     <a (click)="redirectToDetails(bookitem._id)" class="btn mr-3">More Details..</a>
                       <div class="rating">
                           <i class="fa fa-star-o"></i>
