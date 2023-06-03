@@ -1,0 +1,11 @@
+.logo-img img{
+    height: 90px;
+    width: 150px;
+    
+}
+.search-bar{
+    width: 400px;
+    height: 30px;
+    margin: 0 40px;
+    border-radius: 20px;
+}
