@@ -23,7 +23,18 @@ book: any
 ngOnInit() {
 
   this.id = this.activatedRoute.snapshot.params['id'];
-  this.bookService.getBook(1).subscribe((res:any)=>this.Books=res)
+  console.log(this.id);
+  this.bookService.getBook(1).subscribe((res:any)=>{
+    this.Books=res
+
+    console.log(this.Books)
+  
+
+  }
+  )
+  
+  
+
 
 }
 // getBooks(){
