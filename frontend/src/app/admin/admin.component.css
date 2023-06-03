@@ -9,3 +9,9 @@
     margin: 0 40px;
     border-radius: 20px;
 }
+.admin_image{
+    position: relative;
+    left: 225px;
+    top:50px
+
+}

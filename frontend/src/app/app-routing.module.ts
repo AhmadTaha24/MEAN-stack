@@ -18,6 +18,7 @@ import { WantToReadComponent } from './user/components/home-page/want-to-read/wa
 import { AuthorsComponent } from './admin/authors/authors.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
+import { HomePageComponent } from './user/components/home-page/home-page.component';
 
 
 const routes: Routes = [
@@ -62,6 +63,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'user',
+    component: HomePageComponent
   },
   {
     path: 'user/all',

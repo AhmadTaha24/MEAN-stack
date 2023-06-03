@@ -26,8 +26,8 @@
         </div>
         <div class="row">
             <div *ngFor="let category of categories;index as i" class="col-md-4">
-                <div class="card" style="width: 18rem; border: none; text-align: center;">
-                <p><button class="btn btn-lg mt-3" (click)="go(i)">{{category.name | uppercase}}</button></p>
+                <div class="card m-3" style="width: 18rem; border: none; text-align: center;">
+                <p><button class="btn btn-lg mt-3 " (click)="go(i)">{{category.name | uppercase}}</button></p>
             </div>
         </div>
     </div>

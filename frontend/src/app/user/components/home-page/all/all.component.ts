@@ -5,6 +5,7 @@ import { AuthorService } from 'src/app/services/author.service';
 import { BookService } from 'src/app/services/book.service';
 import { ReviewsService } from 'src/app/services/reviews.service';
 import { ShalveService } from 'src/app/services/shalve.service';
+import { Author } from './../../../../interfaces/authors';
 
 @Component({
   selector: 'app-all',
@@ -12,6 +13,8 @@ import { ShalveService } from 'src/app/services/shalve.service';
   styleUrls: ['./all.component.css']
 })
 export class AllComponent {
+
+  // author="/user/all/authors";
 
 
   userId =""; 
