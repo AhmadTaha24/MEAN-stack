@@ -27,18 +27,14 @@ import { AuthorsComponent } from './admin/authors/authors.component'
 import { adminBooksComponent } from './admin/books/books.component'
 import { AllComponent } from './user/components/home-page/all/all.component'
 import { ReadComponent } from './user/components/home-page/read/read.component'
-<<<<<<< HEAD
-import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component'
 import { CategoryBodyComponent } from './books-of-category/category-body/category-body.component';
 import { AuthorInforComponent } from './books-of-category/author-info/author-infor.component';
-=======
 import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
 import { AdminComponent } from './admin/admin.component'
 import { EditCategoryComponent } from './admin/category/edit-category/edit-category.component';
 import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 
->>>>>>> 174ef567cd35569e21bceeb621504d5d2b4b0591
 
 
 @NgModule({
@@ -65,12 +61,9 @@ import { ListCategoryComponent } from './list-category/list-category.component';
     AllComponent,
     ReadComponent,
     WantToReadComponent,
-<<<<<<< HEAD
     CategoryBodyComponent,
-    AuthorInforComponent
-=======
+    AuthorInforComponent,
     AdminComponent
->>>>>>> 174ef567cd35569e21bceeb621504d5d2b4b0591
   ],
   imports: [
     BrowserModule,

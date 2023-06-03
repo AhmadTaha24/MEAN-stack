@@ -15,14 +15,10 @@ import { AllComponent } from './user/components/home-page/all/all.component';
 import { ReadComponent } from './user/components/home-page/read/read.component';
 import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
 
-<<<<<<< HEAD
-import {AuthorsComponent} from './admin/authors/authors.component';
 import { AuthorInforComponent } from './books-of-category/author-info/author-infor.component';
-=======
-import { AuthorsComponent } from './admin/authors/authors.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
->>>>>>> 174ef567cd35569e21bceeb621504d5d2b4b0591
+import { AuthorsComponent } from './admin/authors/authors.component';
 
 
 const routes: Routes = [
@@ -46,10 +42,7 @@ const routes: Routes = [
     path: "admin/editCategory",
     component: EditCategoryComponent
   },
-<<<<<<< HEAD
  
-=======
->>>>>>> 174ef567cd35569e21bceeb621504d5d2b4b0591
 
   {
     path: 'books',
@@ -110,15 +103,12 @@ const routes: Routes = [
   {
     path: 'admin/books',
     component: adminBooksComponent
-<<<<<<< HEAD
   },
   { path:"editCategory",
   component:EditCategoryComponent
  }, 
-=======
-  }
+  
 
->>>>>>> 174ef567cd35569e21bceeb621504d5d2b4b0591
   // {
   //   path:'Categories',
   //   component: CategoriesComponent,

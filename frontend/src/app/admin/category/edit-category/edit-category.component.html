@@ -31,12 +31,12 @@
         <td scope="row">{{category._id}}</td>
         
         <td>{{category.name}}</td>
-        <td><button   (click)="editTodo(i)" (click)="listAll()" (click)="toggleData(i)" ><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4DH0ZQe2MiB0JKxX36zeyEIEzV_sQkbI_kQ&usqp=CAU" ></button></td>
+        <td><button   (click)="editTodo(i)" class="btn btn-warning" (click)="listAll()" (click)="toggleData(i)" >Edit</button></td>
         <td><button class="btn btn-danger" (click)="deleteTodo(i)"(click)="listAll()"> Delete </button></td>
       </tr>
       
     </tbody>
-    <button class="btn btn-primary" (click)="AddCategory()"> ADd Category </button>
+    <button class="btn btn-primary" (click)="AddCategory()"> Add Category </button>
 
     
   </table>

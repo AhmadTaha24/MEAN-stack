@@ -13,7 +13,7 @@
          ngModel
          #email="ngModel"
          required
-         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+         pattern=""
          >
         <div id="emailHelp" class="form-text text-muted " *ngIf="email.touched && email.invalid">
   <span class="text-danger" *ngIf="email?.errors?.['required']">
