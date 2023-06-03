@@ -14,7 +14,7 @@ import { ShalveService } from 'src/app/services/shalve.service';
 export class AllComponent {
 
 
-  userId ="64733c0196b38ebbd71ef24b" /**this part to simulate login playload */
+  userId =""; 
 
 
   arrRev:any =[];
@@ -22,7 +22,16 @@ export class AllComponent {
   AuthorData:any =0;
   ReviewData:any = 0;
   shelveData:any = 0;
-  constructor(private bookService:BookService,private authorData :AdminAuthorsService, private reviewData: ReviewsService, private allBooks: AdminBooksService, private allShelve: ShalveService ){}
+  constructor(private bookService:BookService,private authorData :AdminAuthorsService, private reviewData: ReviewsService, private allBooks: AdminBooksService, private allShelve: ShalveService ){
+
+   let userData = JSON.parse(localStorage.getItem("userData")!);
+
+   this.userId= userData._id
+    
+    console.log(userData);
+    
+
+  }
 
 ////////getting data from db
   ngOnInit(){
@@ -80,6 +89,8 @@ export class AllComponent {
         return book}
       
     }).authorId .fullName;
+   
+    
   }
 
     
@@ -103,10 +114,10 @@ export class AllComponent {
 
   //////get author for shelve table
   getAuthorShelve(authId: string){
-    console.log(this.ReviewData[0].book._id);
-    console.log(this.ReviewData.find((rev:any)=>{
-      if(rev.book._id == "647356636ca4714edb7c0fb7"){return rev}
-    }));
+   // console.log(this.ReviewData[0].book._id);
+    // console.log(this.ReviewData.find((rev:any)=>{
+    //   if(rev.book._id == "647356636ca4714edb7c0fb7"){return rev}
+    // }));
     return this.AuthorData.find((author:any)=>{
       if(author._id == authId){return author}
       
@@ -117,7 +128,7 @@ export class AllComponent {
 
   ////////get ratting for shelve table
   getRating(bookId: string){
-    console.log(this.ReviewData[0]);
+   // console.log(this.ReviewData[0]);
     let rating;
     try{ /////throw error if cannot find ratting for a book
       let result= this.ReviewData.find((rev:any)=>{
@@ -145,7 +156,7 @@ export class AllComponent {
   ///////get  average ratting for shelve table
 
   getAvgRating(bookId: string){
-    console.log(this.ReviewData[0]);
+   // console.log(this.ReviewData[0]);
     let avgRating;
     try{ /////throw error if cannot find average ratting for a book
       let result= this.ReviewData.find((rev:any)=>{

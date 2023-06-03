@@ -1,5 +1,6 @@
 <div class="container">
     <h3 class="display-4 my-5">All</h3>
+    <h1></h1>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -54,9 +55,9 @@
           <td>{{shelve.bookId.title}}</td>
           <td>{{getAuthorShelve(shelve.bookId.authorId)}}</td>
           <!-- <td>{{getAvgRating(shelve.bookId._id)}}</td> -->
-          <td>{{(shelve.bookId._id)}}result={{getAvgRating(shelve.bookId._id)}}</td>
+          <td>{{getAvgRating(shelve.bookId._id)}}</td>
 
-          <td>{{(shelve.bookId._id)}}result={{getRating(shelve.bookId._id)}}</td>
+          <td>{{getRating(shelve.bookId._id)}}</td>
           <td>{{shelve.shelve}}</td>
 
         </tr>
