@@ -1,12 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ListCategoryComponent } from './list-category/list-category.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
+import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
+import { EditCategoryComponent } from './admin/category/edit-category/edit-category.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
 import { BooksComponent } from './user/components/books/books.component';
-import { adminBooksComponent }  from './admin/books/books.component' ;
+import { adminBooksComponent } from './admin/books/books.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { BooksDetailsComponent } from './user/components/books/books-details/books-details.component';
@@ -16,28 +15,35 @@ import { AllComponent } from './user/components/home-page/all/all.component';
 import { ReadComponent } from './user/components/home-page/read/read.component';
 import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
 
-import {AuthorsComponent} from './admin/authors/authors.component';
+import { AuthorsComponent } from './admin/authors/authors.component';
+import { AdminComponent } from './admin/admin.component';
+import { ListCategoryComponent } from './list-category/list-category.component';
 
 
 const routes: Routes = [
-  { path:"",
-  component:HomeComponent
+  {
+    path: "",
+    component: HomeComponent
   },
-  { path:"categories",
-  component:ListCategoryComponent
+  {
+    path: "categories",
+    component: ListCategoryComponent
   },
-  { path:"BooksOfCategory/:id",
-  component:BooksOfCategoryComponent
+  {
+    path: "BooksOfCategory/:id",
+    component: BooksOfCategoryComponent
   },
-  { path:"AddCategory",
-  component:AddCategoryComponent
+  {
+    path: "admin/AddCategory",
+    component: AddCategoryComponent
   },
-  { path:"editCategory",
-  component:EditCategoryComponent
- },
+  {
+    path: "admin/editCategory",
+    component: EditCategoryComponent
+  },
 
   {
-    path:'books',
+    path: 'books',
     component: BooksComponent,
   },
 
@@ -50,51 +56,60 @@ const routes: Routes = [
 
 
   {
-    path:'register',
+    path: 'register',
     component: RegisterComponent
   },
   {
-    path:'login',
+    path: 'login',
     component: LoginComponent
   },
   {
-    path:'user/all',
-    component:AllComponent
+    path: 'user/all',
+    component: AllComponent
   },
   {
-    path:'user/read',
-    component:ReadComponent
+    path: 'user/read',
+    component: ReadComponent
   },
   {
-    path:'user/want-to-read',
-    component:WantToReadComponent
+    path: 'user/want-to-read',
+    component: WantToReadComponent
   },
   {
-    path:'book-details/:id',
+    path: 'book-details/:id',
     component: BooksDetailsComponent
   },
   {
-    path:'authour-details/:id',
+    path: 'authors',
+    component: AuthoursComponent
+  },
+  {
+    path: 'authour-details/:id',
     component: AuthourDetailsComponent
   },
-  {path:'admin/authors',
+  {
+    path: 'admin/authors',
     component: AuthorsComponent
   },
   {
-    path:'admin/books',
+    path: 'admin',
+    component: AdminComponent
+  },
+  {
+    path: 'admin/books',
     component: adminBooksComponent
   }
-  
+
   // {
   //   path:'Categories',
   //   component: CategoriesComponent,
   //   // canActivate: [authGuardGuard]
   // },
-  
 
 
-  
-  
+
+
+
 ];
 
 

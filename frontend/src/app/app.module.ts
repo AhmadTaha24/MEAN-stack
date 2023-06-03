@@ -4,12 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 // import { CategoryComponent } from './category/category.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { ListCategoryComponent } from './list-category/list-category.component';
+//import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
+//import { ListCategoryComponent } from './list-category/list-category.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { EditCategoryComponent } from './edit-category/edit-category.component';
+//import { EditCategoryComponent } from './admin/category/edit-category/edit-category.component';
 import { BooksOfCategoryComponent } from './books-of-category/books-of-category.component';
 import { BooksComponent } from './user/components/books/books.component';
 import { AuthoursComponent } from './user/components/authours/authours.component';
@@ -27,7 +27,11 @@ import { AuthorsComponent } from './admin/authors/authors.component'
 import { adminBooksComponent } from './admin/books/books.component'
 import { AllComponent } from './user/components/home-page/all/all.component'
 import { ReadComponent } from './user/components/home-page/read/read.component'
-import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component'
+import { WantToReadComponent } from './user/components/home-page/want-to-read/want-to-read.component';
+import { AdminComponent } from './admin/admin.component'
+import { EditCategoryComponent } from './admin/category/edit-category/edit-category.component';
+import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
+import { ListCategoryComponent } from './list-category/list-category.component';
 
 
 
@@ -54,7 +58,8 @@ import { WantToReadComponent } from './user/components/home-page/want-to-read/wa
     BooksDetailsComponent,
     AllComponent,
     ReadComponent,
-    WantToReadComponent
+    WantToReadComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
