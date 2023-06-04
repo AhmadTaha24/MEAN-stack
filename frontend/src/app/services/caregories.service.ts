@@ -11,6 +11,9 @@ export class CaregoriesService {
   getAllCategory() {
     return this.http.get('http://localhost:5000/category');
   }
+  getCategory(id:string) {
+    return this.http.get('http://localhost:5000/category'+id);
+  }
 
   editCategory(id: string, body:Object){
     return this.http.put<any>('http://localhost:5000/category/'+id,body);
