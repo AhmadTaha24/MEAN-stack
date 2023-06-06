@@ -17,8 +17,10 @@
       </tbody>
 
 </table> -->
-
+<!-- <div class="container m-5 m-auto"> -->
 <section class="bg-color " style="background-color: #eee;">
+    <div class="container m-5 m-auto">
+    
     <div class="containers">
         <div class="title">
             <p>All kind of Categories For You</p>
@@ -26,12 +28,12 @@
         </div>
         <div class="row">
             <div *ngFor="let category of categories;index as i" class="col-md-4">
-                <div class="card m-3" style="width: 18rem; border: none; text-align: center;">
-                <p><button class="btn btn-lg mt-3 " (click)="go(i)">{{category.name | uppercase}}</button></p>
+                <div class="card bg-category m-3" style="width: 18rem; border: none; text-align: center;">
+                <p><button class="btn mt-3 btn-category " (click)="go(i)">{{category.name | uppercase}}</button></p>
             </div>
         </div>
     </div>
 
         </div>
-
+</div>
         </section>

@@ -19,6 +19,7 @@ import { AuthorsComponent } from './admin/authors/authors.component';
 import { AdminComponent } from './admin/admin.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
 import { HomePageComponent } from './user/components/home-page/home-page.component';
+import { SearchComponent } from './user/navbar/search/search.component';
 
 
 const routes: Routes = [
@@ -103,7 +104,14 @@ const routes: Routes = [
   {
     path: 'admin/books',
     component: adminBooksComponent
+  },
+
+  {
+    path: 'search/:query',
+    component: SearchComponent
   }
+
+
 
   // {
   //   path:'Categories',

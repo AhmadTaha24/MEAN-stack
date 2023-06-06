@@ -9,7 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class NavbarComponent {
 @Input()  authors !:string
-  islogin:boolean = false
+  islogin:boolean = false 
   // admin:boolean =false
   menuType:string = 'default'
 
@@ -35,19 +35,25 @@ ngOnInit():void{
    
     if(val.url){
       if(localStorage.getItem('userData') && ( val.url.includes('login') || val.url.includes('register')|| val.url==('/') )){
-       console.warn(val.url);
-       console.warn("this is login area");
+      //  console.warn(val.url);
+      // console.warn("this is login area");
        this.menuType="login";
       } 
       else{
-        console.warn(val.url);
-        console.warn("this is out login area");
+        // console.warn(val.url);
+       // console.warn("this is out login area");
         this.menuType="default";
       }
       
 
     }
   })
+
+}
+
+submitSearch(val:string){
+  console.warn(val)
+  this.route.navigate([`search/${val}`]);
 
 }
 

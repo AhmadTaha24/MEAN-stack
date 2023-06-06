@@ -32,6 +32,7 @@ import { AdminComponent } from './admin/admin.component'
 import { EditCategoryComponent } from './admin/category/edit-category/edit-category.component';
 import { AddCategoryComponent } from './admin/category/add-category/add-category.component';
 import { ListCategoryComponent } from './list-category/list-category.component';
+import { SearchComponent } from './user/navbar/search/search.component';
 
 
 
@@ -59,7 +60,8 @@ import { ListCategoryComponent } from './list-category/list-category.component';
     AllComponent,
     ReadComponent,
     WantToReadComponent,
-    AdminComponent
+    AdminComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

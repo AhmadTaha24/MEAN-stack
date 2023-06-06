@@ -1,0 +1,63 @@
+<!-- <div class="row">
+
+    <div class="col-md-2"></div>
+
+    <div class="col-md-8">
+
+        <div class="m-2 p-2 bg-blue-200 rounded-sm shadow-sm">
+            <form class="form-inline  my-lg-0" [formGroup]="serchForm" >
+                <input name="" formControlName="search" class="form-control mr-sm-2 search-bar mt-2" type="search" placeholder="Search" aria-label="Search">
+            
+              </form>
+
+        </div>
+
+    /
+        <ng-container *ngIf="booksList.length ;else notfound;">
+            <div class="grid grid-cols-4">
+                <div ngFor="let book of booksList">
+                    <app-books [books]="book"></app-books>
+
+                </div>
+
+            </div>
+        </ng-container>
+
+        <ng-template #notfound>
+
+            <div class="p-2 m-2 ">
+                Not found !
+            </div>
+        </ng-template>
+
+     
+      
+
+    </div>
+
+ 
+
+
+
+      <div class="col-md-2"></div>
+</div> -->
+
+
+
+<div class="row serch-item" *ngFor="let item of searchResult">
+    <div class="col-sm">
+        <img src="{{item.imageUrl}}" >
+    </div>
+
+    <div class="col-sm-8 details">
+
+        <h6>
+            {{item.title}}
+        </h6>
+
+
+
+
+    </div>
+
+</div>
